@@ -1,0 +1,182 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-fraunces), "Georgia", serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+
+  --color-cream-50: #fbf8f3;
+  --color-cream-100: #f6f1e8;
+  --color-cream-200: #ede5d6;
+  --color-cream-300: #e0d3bd;
+
+  --color-ink-950: #171310;
+  --color-ink-900: #1d1814;
+  --color-ink-800: #2c2621;
+  --color-ink-700: #453d35;
+  --color-ink-600: #594f45;
+  --color-ink-500: #6e6357;
+  --color-ink-400: #8a7e70;
+
+  --color-clay-700: #a03e1c;
+  --color-clay-600: #b44820;
+  --color-clay-500: #c8592f;
+  --color-clay-400: #d9713f;
+  --color-clay-200: #eec4ac;
+  --color-clay-100: #f5e2d6;
+  --color-clay-50: #faeee6;
+
+  --color-sage-700: #4c5938;
+  --color-sage-600: #5f7048;
+  --color-sage-500: #6e7f53;
+  --color-sage-200: #cfd6bb;
+  --color-sage-100: #e4e8d8;
+
+  --color-gold-500: #c9973a;
+  --color-gold-400: #d9a441;
+
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out 1.2s infinite;
+  --animate-pulse-dot: pulse-dot 1.8s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.9); opacity: 0.4; }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-cream-50);
+  color: var(--color-ink-900);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-clay-500);
+  color: var(--color-cream-50);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+/* ---- film grain overlay ---- */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+/* ---- scroll reveal ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---- marquee edge fade ---- */
+.marquee-mask {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+/* ---- arch imagery ---- */
+.arch {
+  border-radius: 999px 999px 24px 24px;
+}
+
+/* ---- eyebrow ---- */
+.eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+/* ---- link underline ---- */
+.link-lux {
+  position: relative;
+}
+.link-lux::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1.5px;
+  width: 100%;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.link-lux:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ---- form fields ---- */
+.field {
+  width: 100%;
+  border-radius: 0.9rem;
+  border: 1.5px solid var(--color-cream-300);
+  background: #fffdf9;
+  padding: 0.8rem 1rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-ink-900);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.field::placeholder { color: var(--color-ink-400); font-weight: 400; }
+.field:focus {
+  outline: none;
+  border-color: var(--color-clay-500);
+  box-shadow: 0 0 0 4px rgba(200, 89, 47, 0.12);
+  background: #ffffff;
+}
+.field-error {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.1);
+}
+
+/* ---- faq ---- */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.faq-answer.open {
+  grid-template-rows: 1fr;
+}
+.faq-answer > div {
+  overflow: hidden;
+}
