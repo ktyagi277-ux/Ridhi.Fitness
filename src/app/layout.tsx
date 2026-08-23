@@ -23,7 +23,7 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://coachridhijain.com"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Lose 8–10 kgs in 12 Weeks — No Crash Diets | Coach Ridhi Jain",
+  title: "Ridhi Jain | Nutritionist | Fat Loss Coach for Working Women",
   description:
     "The Metabolic Reset Method™: a hormone-friendly fat-loss program for working women. Desi food, 30-min home workouts, 1:1 coaching by Ridhi Jain (@coachridhijain). Book your free strategy call.",
   keywords: [
@@ -51,14 +51,14 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "Coach Ridhi Jain — Metabolic Reset Method",
     locale: "en_IN",
-    images: [{ url: "/images/coach-hero.png", width: 1200, height: 1500, alt: "Coach Ridhi Jain — fat loss coach for women" }],
+    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Ridhi Jain — Lose 8–10 kgs in 12 weeks, no crash diets" }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Lose 8–10 kgs in 12 Weeks — Coach Ridhi Jain",
     description: "Hormone-friendly fat loss for working women. Book your free strategy call.",
-    images: ["/images/coach-hero.png"],
+    images: ["/images/og-card.jpg"],
   },
   robots: {
     index: true,
