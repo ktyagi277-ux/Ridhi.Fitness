@@ -21,6 +21,10 @@ yarn-error.log*
 .env
 .env*.local
 
+# local-only notes — GitHub/VPS pe kabhi nahi jani chahiye
+NOTES.local.md
+*.local.md
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
