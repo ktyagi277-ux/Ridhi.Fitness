@@ -5,7 +5,7 @@ import { InstagramIcon } from "@/components/icons";
 
 const IG_URL = "https://www.instagram.com/coachridhijain";
 const REEL_URL = "https://www.instagram.com/reel/DGvHa1mzTJj/";
-const EDUCATION_POST_URL = "https://www.instagram.com/p/DbBWqe_j9kN/";
+const EDUCATION_POST_URL = "https://www.instagram.com/p/Db-U4WVj8do/";
 
 const PLAN_POINTS = [
   "Custom diet plans — delicious meals that support fat loss & gut health",
@@ -75,19 +75,19 @@ export default function InstaFeed() {
               rel="noopener noreferrer"
               className="group mt-9 flex flex-col gap-5 rounded-3xl border border-ink-900/8 bg-white p-5 transition-all duration-500 hover:-translate-y-1 hover:border-clay-200 hover:shadow-[0_24px_48px_-24px_rgba(29,24,20,0.22)] sm:flex-row sm:items-center"
             >
-              <div className="relative aspect-[601/693] w-full shrink-0 overflow-hidden rounded-2xl bg-cream-100 sm:w-44">
+              <div className="relative aspect-[4/5] w-full shrink-0 overflow-hidden rounded-2xl bg-cream-100 sm:w-44">
                 <Image
-                  src="/images/ig-legs-education.png"
-                  alt="Instagram post by Ridhi Jain — Your legs are ageing you, or saving you"
+                  src="/images/ig-hormone-education.jpg"
+                  alt="Instagram post by Ridhi Jain — PCOS, thyroid, menopause or postpartum: which one is stopping your weight loss?"
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
                   sizes="(max-width: 640px) 100vw, 176px"
                 />
               </div>
               <div>
                 <p className="eyebrow text-clay-600">Free daily education</p>
                 <p className="font-display mt-2 text-xl font-semibold leading-snug">
-                  &ldquo;Your legs are ageing you. Or saving you.&rdquo;
+                  &ldquo;Which one is actually stopping your weight loss?&rdquo;
                 </p>
                 <p className="mt-2 text-[14px] leading-relaxed text-ink-500">
                   Science-first breakdowns like this drop on the feed every week — hormones, home

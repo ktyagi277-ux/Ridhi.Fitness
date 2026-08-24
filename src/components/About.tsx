@@ -19,8 +19,8 @@ export default function About() {
         <Reveal className="relative mx-auto w-full max-w-md lg:max-w-none">
           <div className="arch relative mx-auto aspect-[4/5] w-full max-w-[420px] overflow-hidden bg-clay-100 shadow-[0_40px_80px_-32px_rgba(29,24,20,0.35)]">
             <Image
-              src="/images/coach-about.jpg"
-              alt="Coach Ridhi Jain on a consultation call"
+              src="/images/ridhi-about.jpg"
+              alt="Coach Ridhi Jain — women's fat loss and hormone health coach"
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 90vw, 420px"

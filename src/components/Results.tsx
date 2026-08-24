@@ -15,47 +15,49 @@ type Transformation = {
 
 const TRANSFORMATIONS: Transformation[] = [
   {
-    image: "/images/ig-hitesh-transformation.png",
+    image: "/images/ig-ayushi-bride.jpg",
+    alt: "Ayushi before and after — 5.5 kgs down before her July wedding, same dress",
+    name: "Ayushi",
+    role: "Bride-to-be · July 2026",
+    result: "66.5 → 61 kg",
+    tags: ["Wedding deadline", "No crash diet"],
+    quote: "She didn't buy a new wardrobe for her wedding — she built the body that filled the old one beautifully.",
+    href: "https://www.instagram.com/p/DZXgNE-Dzbu/",
+  },
+  {
+    image: "/images/ig-mohit-journey.jpg",
+    alt: "Mohit before and after — 87 to 82 kg with 7 inch loss",
+    name: "Mohit",
+    role: "Slow, steady & sustainable",
+    result: "87 → 82 kg · −7 in",
+    tags: ["Visible inch loss", "Better energy"],
+    quote: "Visible inch loss, better energy and disciplined eating habits — progress that actually stays.",
+    href: "https://www.instagram.com/p/DUz-3y3jw7H/",
+  },
+  {
+    image: "/images/ig-hitesh-transformation.jpg",
     alt: "Hitesh before and after — lost 10 kgs in 2.5 months before his engagement",
     name: "Hitesh",
-    role: "Architect · Engagement prep",
-    result: "−10 kg in 2.5 months",
-    tags: ["Vegetarian", "Busy schedule"],
+    role: "Groom-to-be · Engagement prep",
+    result: "98 → 88 kg",
+    tags: ["Vegetarian", "2.5 months"],
     quote: "He lost 10 kgs before his engagement — but the biggest transformation wasn't visible on the scale.",
     href: "https://www.instagram.com/p/DbLoWdwj5Li/",
-  },
-  {
-    image: "/images/transform-2.jpg",
-    alt: "Sneha after her 12 week transformation",
-    name: "Sneha, 26",
-    role: "Software Engineer · Bengaluru",
-    result: "−9 kg in 12 weeks",
-    tags: ["Desk job", "Hostel food history"],
-    quote: "My energy at 6pm is now better than my old 9am. The weight was a bonus.",
-  },
-  {
-    image: "/images/transform-3.jpg",
-    alt: "Meera after her 12 week transformation",
-    name: "Meera, 38",
-    role: "Mom of two · Delhi",
-    result: "−14 kg in 16 weeks",
-    tags: ["Postpartum", "Thyroid"],
-    quote: "Post-baby weight felt permanent. Ridhi proved it was just a method issue.",
   },
 ];
 
 const TESTIMONIALS = [
   {
     quote:
-      "I had tried keto, intermittent fasting, detox teas — everything. Ridhi's plan was the first one that felt like it was made for my actual life. Down 11 kg and my PCOS symptoms are the calmest they've been in years.",
-    name: "Ankita S.",
-    detail: "Lost 11 kg · 13 weeks",
+      "I've lost 7 kgs and feel more confident than ever. RJ Fitness changed my whole routine!",
+    name: "RJ Fitness client",
+    detail: "Lost 7 kg · Weekly win shared on Instagram",
   },
   {
     quote:
-      "The weekly check-ins were the game changer. Every time work got crazy, the plan adjusted with me. I never felt guilty, never felt lost. Just consistent — and consistency is what finally worked.",
-    name: "Ritika M.",
-    detail: "Lost 8.5 kg · 12 weeks",
+      "Down 6 kgs, better habits, better sleep, happier me. This community is gold.",
+    name: "RJ Fitness client",
+    detail: "Lost 6 kg · Weekly win shared on Instagram",
   },
 ];
 
@@ -80,14 +82,14 @@ export function Transformations() {
         {TRANSFORMATIONS.map((t, i) => (
           <Reveal key={t.name} delay={i * 100}>
             <article className="group h-full overflow-hidden rounded-3xl border border-ink-900/8 bg-white transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_56px_-24px_rgba(29,24,20,0.28)]">
-              <div className="relative h-[340px] overflow-hidden bg-cream-100 sm:h-[380px]">
+              <div className="relative aspect-[4/5] overflow-hidden bg-cream-100">
                 {t.href ? (
                   <a href={t.href} target="_blank" rel="noopener noreferrer" aria-label={`See ${t.name}'s transformation post on Instagram`} className="absolute inset-0">
                     <Image
                       src={t.image}
                       alt={t.alt}
                       fill
-                      className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.05]"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </a>
@@ -96,7 +98,7 @@ export function Transformations() {
                     src={t.image}
                     alt={t.alt}
                     fill
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.05]"
+                    className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 )}
@@ -130,7 +132,7 @@ export function Transformations() {
       {/* testimonials */}
       <div className="mt-14 grid gap-5 lg:grid-cols-2">
         {TESTIMONIALS.map((t, i) => (
-          <Reveal key={t.name} delay={i * 120}>
+          <Reveal key={t.detail} delay={i * 120}>
             <figure className="h-full rounded-3xl bg-ink-900 p-8 text-cream-100 sm:p-10">
               <Quote className="h-7 w-7 text-clay-400" fill="currentColor" strokeWidth={0} />
               <div className="mt-4 flex gap-1">
@@ -150,7 +152,7 @@ export function Transformations() {
       </div>
 
       <p className="mt-8 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">
-        Representative imagery · Results shared with consent · Individual outcomes vary with consistency
+        Real client results, as shared on @coachridhijain · Individual outcomes vary with consistency
       </p>
     </section>
   );
