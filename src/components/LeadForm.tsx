@@ -36,7 +36,7 @@ const initialFields: Fields = {
   company: "",
 };
 
-function collectUtm(): Record<string, string> {
+export function collectUtm(): Record<string, string> {
   if (typeof window === "undefined") return {};
   const current = new URLSearchParams(window.location.search);
   const keys = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid"];
@@ -69,10 +69,8 @@ export default function LeadForm({ id, source, dark = false, compactNote }: Lead
   const [formError, setFormError] = useState<string>("");
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [utm, setUtm] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    setUtm(collectUtm());
     trackMetaEvent("ViewContent", { content_name: "Free Strategy Call Form" });
   }, []);
 
@@ -98,7 +96,7 @@ export default function LeadForm({ id, source, dark = false, compactNote }: Lead
       const res = await fetch("/api/enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...fields, source, utm }),
+        body: JSON.stringify({ ...fields, source, utm: collectUtm() }),
       });
       const data = (await res.json()) as { ok: boolean; error?: string; field?: string };
 

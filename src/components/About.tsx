@@ -28,7 +28,8 @@ export default function About() {
           </div>
 
           {/* floating badges */}
-          <div className="absolute -left-2 top-10 animate-float rounded-2xl border border-ink-900/8 bg-white/95 px-5 py-3.5 shadow-[0_16px_40px_-16px_rgba(29,24,20,0.3)] backdrop-blur sm:left-2">
+          {/* On phones the photo is narrow, so keep this badge low (near the waist) — at the top it covers the face. */}
+          <div className="absolute -left-2 bottom-32 top-auto animate-float rounded-2xl border border-ink-900/8 bg-white/95 px-5 py-3.5 shadow-[0_16px_40px_-16px_rgba(29,24,20,0.3)] backdrop-blur sm:bottom-auto sm:left-2 sm:top-10">
             <p className="font-display text-2xl font-semibold text-clay-600">12 wks</p>
             <p className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-ink-500">Average program</p>
           </div>
@@ -59,7 +60,7 @@ export default function About() {
               <p>
                 Over the last few years I&apos;ve helped <strong className="font-bold text-ink-900">1,000+ working women lose 8–10 kgs in 12 weeks</strong> —
                 not with detox teas or boiled vegetables, but by fixing metabolism, hormones and habits
-                around their real lives: meetings, maids' off days, business travel and shaadi season included.
+                around their real lives: meetings, maids&apos; off days, business travel and shaadi season included.
               </p>
               <p className="font-display text-xl italic text-ink-800">
                 &ldquo;You don&apos;t need more willpower. You need a plan that respects your life.&rdquo;

@@ -8,7 +8,9 @@ import InstaFeed from "@/components/InstaFeed";
 import { FitCheck, FinalCta, Footer } from "@/components/Closing";
 import Faq from "@/components/Faq";
 import StickyCta from "@/components/StickyCta";
+import PaymentCta from "@/components/PaymentCta";
 import { FAQS } from "@/lib/faqs";
+import { getProgramPriceInr, isRazorpayConfigured } from "@/lib/razorpay";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -80,6 +82,8 @@ export default function Home() {
       <InstaFeed />
       <FitCheck />
       <Faq />
+      {/* Payment section only renders once RAZORPAY_KEY_ID / RAZORPAY_KEY_SECRET are set */}
+      {isRazorpayConfigured() && <PaymentCta priceInr={getProgramPriceInr()} />}
       <FinalCta />
       <Footer />
       <StickyCta />

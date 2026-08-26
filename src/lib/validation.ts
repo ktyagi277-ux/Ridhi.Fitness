@@ -54,3 +54,23 @@ export const enquirySchema = z.object({
 });
 
 export type EnquiryInput = z.infer<typeof enquirySchema>;
+
+export const paymentOrderSchema = z.object({
+  name: z.string().trim().min(2, "Please enter your full name").max(80, "Name is too long"),
+  email: z.string().trim().email("Please enter a valid email address").max(120),
+  phone: z
+    .string()
+    .trim()
+    .regex(/^\+?[0-9\s\-()]{10,16}$/, "Please enter a valid 10-digit WhatsApp number"),
+  utm: z.record(z.string(), z.string().max(300)).optional(),
+});
+
+export type PaymentOrderInput = z.infer<typeof paymentOrderSchema>;
+
+export const paymentVerifySchema = z.object({
+  razorpay_order_id: z.string().trim().min(1).max(120),
+  razorpay_payment_id: z.string().trim().min(1).max(120),
+  razorpay_signature: z.string().trim().min(1).max(200),
+});
+
+export type PaymentVerifyInput = z.infer<typeof paymentVerifySchema>;

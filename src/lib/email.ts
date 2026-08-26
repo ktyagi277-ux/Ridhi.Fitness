@@ -1,4 +1,4 @@
-import type { Enquiry } from "@/db/schema";
+import type { Enquiry, Payment } from "@/db/schema";
 
 function esc(value: unknown): string {
   return String(value ?? "")
@@ -52,18 +52,54 @@ function buildHtml(lead: Enquiry): string {
 </html>`;
 }
 
+function buildPaymentHtml(payment: Payment): string {
+  const amountInr = (payment.amount / 100).toLocaleString("en-IN");
+  return `<!doctype html>
+<html>
+<body style="margin:0;padding:0;background:#F6F1E8;font-family:Georgia,serif;">
+  <div style="max-width:560px;margin:24px auto;background:#FBF8F3;border:1px solid #EDE5D6;border-radius:16px;overflow:hidden;">
+    <div style="background:#1D1814;color:#FBF8F3;padding:20px 24px;">
+      <div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#5E7B5A;font-weight:700;">Payment Received — coachridhijain.com</div>
+      <div style="font-size:22px;margin-top:6px;">${esc(payment.name)} paid ₹${esc(amountInr)}</div>
+    </div>
+    <table style="width:100%;border-collapse:collapse;">
+      ${row("Amount", `₹${amountInr} ${payment.currency}`)}
+      ${row("Phone / WhatsApp", payment.phone)}
+      ${row("Email", payment.email)}
+      ${row("Razorpay Order ID", payment.razorpayOrderId)}
+      ${row("Razorpay Payment ID", payment.razorpayPaymentId)}
+      ${row("Paid at", payment.paidAt?.toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }))}
+    </table>
+    <div style="padding:16px 24px;background:#EDE5D6;color:#453D35;font-size:12px;font-family:Arial,sans-serif;">
+      Verify the payment in the Razorpay dashboard, then WhatsApp the client to onboard them.
+    </div>
+  </div>
+</body>
+</html>`;
+}
+
 /**
  * Sends the enquiry notification email.
  * Priority: Resend API (RESEND_API_KEY) → SMTP via nodemailer (SMTP_*) → console log.
  * Never throws — email failures must not break lead capture.
  */
 export async function sendEnquiryEmail(lead: Enquiry): Promise<void> {
-  const to = process.env.NOTIFY_EMAIL;
   const subject = `New Lead: ${lead.name} — ${lead.goal ?? "Free Strategy Call"}`;
-  const html = buildHtml(lead);
+  await deliverEmail(subject, buildHtml(lead), `${lead.name} ${lead.phone}`);
+}
+
+/** Sends the payment notification email. Never throws. */
+export async function sendPaymentEmail(payment: Payment): Promise<void> {
+  const amountInr = (payment.amount / 100).toLocaleString("en-IN");
+  const subject = `💰 Payment Received: ₹${amountInr} from ${payment.name}`;
+  await deliverEmail(subject, buildPaymentHtml(payment), `${payment.name} ${payment.phone}`);
+}
+
+async function deliverEmail(subject: string, html: string, logContext: string): Promise<void> {
+  const to = process.env.NOTIFY_EMAIL;
 
   if (!to) {
-    console.log("[email] NOTIFY_EMAIL not set. Lead captured:", lead.name, lead.phone);
+    console.log("[email] NOTIFY_EMAIL not set. Captured:", logContext);
     return;
   }
 
@@ -106,8 +142,8 @@ export async function sendEnquiryEmail(lead: Enquiry): Promise<void> {
       return;
     }
 
-    console.log("[email] No provider configured (set RESEND_API_KEY or SMTP_*). Lead:", lead.name, lead.phone);
+    console.log("[email] No provider configured (set RESEND_API_KEY or SMTP_*). Captured:", logContext);
   } catch (error) {
-    console.error("[email] Failed to send enquiry notification:", error);
+    console.error("[email] Failed to send notification:", error);
   }
 }
