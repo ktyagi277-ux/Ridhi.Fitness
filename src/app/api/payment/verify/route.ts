@@ -32,6 +32,16 @@ export async function POST(req: NextRequest) {
   }
 
   try {
+    // Replay guard: a valid signature can be re-sent; don't re-notify for an already-paid order.
+    const [existing] = await db
+      .select({ status: payments.status })
+      .from(payments)
+      .where(eq(payments.razorpayOrderId, razorpay_order_id))
+      .limit(1);
+    if (existing?.status === "paid") {
+      return NextResponse.json({ ok: true, duplicate: true });
+    }
+
     const [payment] = await db
       .update(payments)
       .set({ status: "paid", razorpayPaymentId: razorpay_payment_id, paidAt: new Date() })

@@ -29,9 +29,11 @@ export default async function EnquiriesPage({
   searchParams: Promise<{ key?: string }>;
 }) {
   const { key } = await searchParams;
-  const adminKey = process.env.ADMIN_KEY ?? "ridhi-admin-2026";
+  // No fallback — the repo is public, so a hardcoded default key would leak.
+  // If ADMIN_KEY is not set in the environment, the dashboard stays locked.
+  const adminKey = process.env.ADMIN_KEY;
 
-  if (key !== adminKey) {
+  if (!adminKey || key !== adminKey) {
     return (
       <main className="flex min-h-screen items-center justify-center bg-cream-50 px-5">
         <div className="w-full max-w-sm rounded-3xl border border-cream-200 bg-white p-8 text-center shadow-[0_24px_60px_-24px_rgba(29,24,20,0.25)]">

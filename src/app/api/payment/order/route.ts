@@ -6,6 +6,28 @@ import { createRazorpayOrder, getProgramPriceInr, isRazorpayConfigured } from "@
 
 export const dynamic = "force-dynamic";
 
+// In-memory rate limit (single pm2 instance): max 5 order attempts per IP per 15 minutes.
+const RATE_LIMIT = 5;
+const RATE_WINDOW_MS = 15 * 60 * 1000;
+const orderAttempts = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (orderAttempts.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
+  if (recent.length >= RATE_LIMIT) {
+    orderAttempts.set(ip, recent);
+    return true;
+  }
+  recent.push(now);
+  orderAttempts.set(ip, recent);
+  if (orderAttempts.size > 5000) {
+    for (const [k, v] of orderAttempts) {
+      if (v.every((t) => now - t >= RATE_WINDOW_MS)) orderAttempts.delete(k);
+    }
+  }
+  return false;
+}
+
 export async function POST(req: NextRequest) {
   if (!isRazorpayConfigured()) {
     return NextResponse.json(
@@ -31,6 +53,17 @@ export async function POST(req: NextRequest) {
         field: typeof issue?.path?.[0] === "string" ? issue.path[0] : undefined,
       },
       { status: 422 }
+    );
+  }
+
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    req.headers.get("x-real-ip") ??
+    "unknown";
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { ok: false, error: "Too many attempts. Please wait a few minutes and try again." },
+      { status: 429 }
     );
   }
 
