@@ -1,9 +1,7 @@
 import Image from "next/image";
-import { Star, Quote } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
-type PhotoSlide = {
-  kind: "photo";
+type Slide = {
   image: string;
   alt: string;
   name: string;
@@ -12,22 +10,11 @@ type PhotoSlide = {
   tags: string[];
   quote: string;
   href?: string;
+  imgClass?: string;
 };
-
-type QuoteSlide = {
-  kind: "quote";
-  quote: string;
-  name: string;
-  detail: string;
-  stat: string;
-  statLabel: string;
-};
-
-type Slide = PhotoSlide | QuoteSlide;
 
 const SLIDES: Slide[] = [
   {
-    kind: "photo",
     image: "/images/ig-ayushi-bride.jpg",
     alt: "Ayushi before and after — 5.5 kgs down before her July wedding, same dress",
     name: "Ayushi",
@@ -38,15 +25,17 @@ const SLIDES: Slide[] = [
     href: "https://www.instagram.com/p/DZXgNE-Dzbu/",
   },
   {
-    kind: "quote",
-    quote: "I've lost 7 kgs and feel more confident than ever. RJ Fitness changed my whole routine!",
-    name: "RJ Fitness client",
-    detail: "Weekly win shared on Instagram",
-    stat: "−7 kg",
-    statLabel: "and more confident than ever",
+    image: "/images/ig-client-collage.png",
+    alt: "Four RJ Fitness client transformations, before and after",
+    name: "The community",
+    role: "Four more real journeys",
+    result: "4 transformations",
+    tags: ["Real clients"],
+    quote: "Down 6 kgs, better habits, better sleep, happier me. This community is gold.",
+    href: "https://www.instagram.com/coachridhijain",
+    imgClass: "object-top",
   },
   {
-    kind: "photo",
     image: "/images/ig-mohit-journey.jpg",
     alt: "Mohit before and after — 87 to 82 kg with 7 inch loss",
     name: "Mohit",
@@ -57,15 +46,16 @@ const SLIDES: Slide[] = [
     href: "https://www.instagram.com/p/DUz-3y3jw7H/",
   },
   {
-    kind: "quote",
-    quote: "Down 6 kgs, better habits, better sleep, happier me. This community is gold.",
-    name: "RJ Fitness client",
-    detail: "Weekly win shared on Instagram",
-    stat: "−6 kg",
-    statLabel: "better sleep · better habits",
+    image: "/images/ig-pattern-of-wins.jpg",
+    alt: "Not one client — a pattern of wins. Real weekly progress messages from people inside RJ Fitness",
+    name: "Weekly wins",
+    role: "Real messages · real people",
+    result: "Pattern of wins",
+    tags: ["Screenshots from clients"],
+    quote: "I've lost 7 kgs and feel more confident than ever. RJ Fitness changed my whole routine!",
+    href: "https://www.instagram.com/p/Dbn6rcVj_Pa/",
   },
   {
-    kind: "photo",
     image: "/images/ig-hitesh-transformation.jpg",
     alt: "Hitesh before and after — lost 10 kgs in 2.5 months before his engagement",
     name: "Hitesh",
@@ -77,7 +67,7 @@ const SLIDES: Slide[] = [
   },
 ];
 
-function PhotoCard({ t }: { t: PhotoSlide }) {
+function PhotoCard({ t }: { t: Slide }) {
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-ink-900/8 bg-white transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_56px_-24px_rgba(29,24,20,0.28)]">
       <div className="relative aspect-[4/5] overflow-hidden bg-cream-100">
@@ -87,7 +77,7 @@ function PhotoCard({ t }: { t: PhotoSlide }) {
               src={t.image}
               alt={t.alt}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+              className={`object-cover transition-transform duration-700 group-hover:scale-[1.05] ${t.imgClass ?? ""}`}
               sizes="(max-width: 640px) 300px, 360px"
             />
           </a>
@@ -96,7 +86,7 @@ function PhotoCard({ t }: { t: PhotoSlide }) {
             src={t.image}
             alt={t.alt}
             fill
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+            className={`object-cover transition-transform duration-700 group-hover:scale-[1.05] ${t.imgClass ?? ""}`}
             sizes="(max-width: 640px) 300px, 360px"
           />
         )}
@@ -126,49 +116,10 @@ function PhotoCard({ t }: { t: PhotoSlide }) {
   );
 }
 
-function QuoteCard({ t }: { t: QuoteSlide }) {
-  return (
-    <figure className="relative flex h-full flex-col overflow-hidden rounded-3xl bg-ink-900 p-8 text-cream-100">
-      {/* watermark */}
-      <Quote
-        className="pointer-events-none absolute -right-8 -top-8 h-44 w-44 text-cream-100/[0.05]"
-        fill="currentColor"
-        strokeWidth={0}
-      />
-
-      <div className="flex items-center gap-1">
-        {Array.from({ length: 5 }).map((_, s) => (
-          <Star key={s} className="h-4 w-4 text-gold-400" fill="currentColor" strokeWidth={0} />
-        ))}
-        <span className="ml-2 text-[11px] font-extrabold uppercase tracking-[0.14em] text-cream-100/50">
-          Verified win
-        </span>
-      </div>
-
-      <blockquote className="font-display mt-6 text-[21px] font-medium leading-relaxed">
-        &ldquo;{t.quote}&rdquo;
-      </blockquote>
-
-      <div className="mt-auto pt-8">
-        <p className="font-display text-[64px] font-semibold leading-none text-gold-400">
-          {t.stat.replace(" kg", "")}
-          <span className="ml-1 text-3xl">kg</span>
-        </p>
-        <p className="mt-2 text-[12px] font-extrabold uppercase tracking-[0.14em] text-cream-100/60">
-          {t.statLabel}
-        </p>
-        <figcaption className="mt-6 border-t border-cream-100/10 pt-4 text-[11.5px] font-extrabold uppercase tracking-[0.14em] text-cream-100/50">
-          {t.name} — <span className="text-clay-400">{t.detail}</span>
-        </figcaption>
-      </div>
-    </figure>
-  );
-}
-
 function SlideTrackItem({ slide }: { slide: Slide }) {
   return (
     <div className="w-[300px] shrink-0 sm:w-[360px]">
-      {slide.kind === "photo" ? <PhotoCard t={slide} /> : <QuoteCard t={slide} />}
+      <PhotoCard t={slide} />
     </div>
   );
 }
@@ -224,7 +175,7 @@ export function Transformations() {
           >
             <div className="relative min-h-[340px] overflow-hidden md:min-h-[420px]">
               <Image
-                src="/images/ig-ridhi-13kg.jpg"
+                src="/images/ig-ridhi-13kg-crop.jpg"
                 alt="Coach Ridhi's own before and after — 13 kgs down"
                 fill
                 className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
