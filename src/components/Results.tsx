@@ -19,6 +19,8 @@ type QuoteSlide = {
   quote: string;
   name: string;
   detail: string;
+  stat: string;
+  statLabel: string;
 };
 
 type Slide = PhotoSlide | QuoteSlide;
@@ -39,7 +41,9 @@ const SLIDES: Slide[] = [
     kind: "quote",
     quote: "I've lost 7 kgs and feel more confident than ever. RJ Fitness changed my whole routine!",
     name: "RJ Fitness client",
-    detail: "Lost 7 kg · Weekly win shared on Instagram",
+    detail: "Weekly win shared on Instagram",
+    stat: "−7 kg",
+    statLabel: "and more confident than ever",
   },
   {
     kind: "photo",
@@ -53,21 +57,12 @@ const SLIDES: Slide[] = [
     href: "https://www.instagram.com/p/DUz-3y3jw7H/",
   },
   {
-    kind: "photo",
-    image: "/images/ig-ridhi-13kg.jpg",
-    alt: "Coach Ridhi's own before and after — 13 kgs down",
-    name: "Coach Ridhi",
-    role: "Her own journey — walked the talk",
-    result: "13 kg down",
-    tags: ["Coach's own result"],
-    quote: "The method she coaches is the method she lived — down 13 kgs herself, and it stayed off.",
-    href: "https://www.instagram.com/p/DbV6s6gj-7c/",
-  },
-  {
     kind: "quote",
     quote: "Down 6 kgs, better habits, better sleep, happier me. This community is gold.",
     name: "RJ Fitness client",
-    detail: "Lost 6 kg · Weekly win shared on Instagram",
+    detail: "Weekly win shared on Instagram",
+    stat: "−6 kg",
+    statLabel: "better sleep · better habits",
   },
   {
     kind: "photo",
@@ -133,21 +128,39 @@ function PhotoCard({ t }: { t: PhotoSlide }) {
 
 function QuoteCard({ t }: { t: QuoteSlide }) {
   return (
-    <figure className="flex h-full flex-col justify-between rounded-3xl bg-ink-900 p-8 text-cream-100">
-      <div>
-        <Quote className="h-7 w-7 text-clay-400" fill="currentColor" strokeWidth={0} />
-        <div className="mt-4 flex gap-1">
-          {Array.from({ length: 5 }).map((_, s) => (
-            <Star key={s} className="h-4 w-4 text-gold-400" fill="currentColor" strokeWidth={0} />
-          ))}
-        </div>
-        <blockquote className="font-display mt-5 text-[21px] font-medium leading-relaxed">
-          {t.quote}
-        </blockquote>
+    <figure className="relative flex h-full flex-col overflow-hidden rounded-3xl bg-ink-900 p-8 text-cream-100">
+      {/* watermark */}
+      <Quote
+        className="pointer-events-none absolute -right-8 -top-8 h-44 w-44 text-cream-100/[0.05]"
+        fill="currentColor"
+        strokeWidth={0}
+      />
+
+      <div className="flex items-center gap-1">
+        {Array.from({ length: 5 }).map((_, s) => (
+          <Star key={s} className="h-4 w-4 text-gold-400" fill="currentColor" strokeWidth={0} />
+        ))}
+        <span className="ml-2 text-[11px] font-extrabold uppercase tracking-[0.14em] text-cream-100/50">
+          Verified win
+        </span>
       </div>
-      <figcaption className="mt-8 text-[12px] font-extrabold uppercase tracking-[0.14em] text-cream-100/60">
-        {t.name} — <span className="text-clay-400">{t.detail}</span>
-      </figcaption>
+
+      <blockquote className="font-display mt-6 text-[21px] font-medium leading-relaxed">
+        &ldquo;{t.quote}&rdquo;
+      </blockquote>
+
+      <div className="mt-auto pt-8">
+        <p className="font-display text-[64px] font-semibold leading-none text-gold-400">
+          {t.stat.replace(" kg", "")}
+          <span className="ml-1 text-3xl">kg</span>
+        </p>
+        <p className="mt-2 text-[12px] font-extrabold uppercase tracking-[0.14em] text-cream-100/60">
+          {t.statLabel}
+        </p>
+        <figcaption className="mt-6 border-t border-cream-100/10 pt-4 text-[11.5px] font-extrabold uppercase tracking-[0.14em] text-cream-100/50">
+          {t.name} — <span className="text-clay-400">{t.detail}</span>
+        </figcaption>
+      </div>
     </figure>
   );
 }
@@ -182,7 +195,7 @@ export function Transformations() {
       {/* auto-sliding right-to-left carousel — pauses on hover */}
       <Reveal>
         <div className="marquee-mask mt-12 overflow-hidden">
-          <div className="flex w-max animate-[marquee_60s_linear_infinite] items-stretch gap-5 pr-5 hover:[animation-play-state:paused]">
+          <div className="flex w-max animate-[marquee_38s_linear_infinite] items-stretch gap-5 pr-5 hover:[animation-play-state:paused]">
             {SLIDES.map((slide, i) => (
               <SlideTrackItem key={`a-${i}`} slide={slide} />
             ))}
@@ -199,6 +212,46 @@ export function Transformations() {
       <p className="mt-8 px-5 text-center text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-400">
         Real client results, as shared on @coachridhijain · Individual outcomes vary with consistency
       </p>
+
+      {/* Ridhi's own journey — dedicated highlight */}
+      <div className="mx-auto mt-14 max-w-7xl px-5 sm:px-8">
+        <Reveal>
+          <a
+            href="https://www.instagram.com/p/DbV6s6gj-7c/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group grid overflow-hidden rounded-[32px] bg-ink-900 text-cream-100 shadow-[0_32px_64px_-28px_rgba(29,24,20,0.5)] transition-transform duration-500 hover:-translate-y-1 md:grid-cols-[0.85fr_1.15fr]"
+          >
+            <div className="relative min-h-[340px] overflow-hidden md:min-h-[420px]">
+              <Image
+                src="/images/ig-ridhi-13kg.jpg"
+                alt="Coach Ridhi's own before and after — 13 kgs down"
+                fill
+                className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                sizes="(max-width: 768px) 100vw, 40vw"
+              />
+              <span className="absolute left-4 top-4 rounded-full bg-gold-500 px-4 py-2 text-[12px] font-extrabold uppercase tracking-[0.08em] text-ink-900">
+                13 kg down · kept off
+              </span>
+            </div>
+            <div className="flex flex-col justify-center p-8 sm:p-12">
+              <p className="eyebrow text-gold-400">Coach&apos;s own journey</p>
+              <h3 className="font-display mt-4 text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl">
+                Before she coached 1,000+ women, Ridhi transformed{" "}
+                <em className="italic text-clay-400">herself first.</em>
+              </h3>
+              <p className="mt-5 max-w-lg text-[15.5px] leading-relaxed text-cream-100/70">
+                Down 13 kgs with the exact system she now teaches — desi food, home workouts, no crash
+                diets. The method she coaches is the method she lived. That&apos;s why it works in real life,
+                not just on paper.
+              </p>
+              <span className="mt-7 inline-flex items-center gap-2 text-[12px] font-extrabold uppercase tracking-[0.16em] text-gold-400 transition group-hover:text-gold-500">
+                See her journey on Instagram →
+              </span>
+            </div>
+          </a>
+        </Reveal>
+      </div>
     </section>
   );
 }

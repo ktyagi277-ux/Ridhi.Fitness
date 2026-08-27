@@ -138,6 +138,35 @@ export default function Home() {
           )}
         </div>
 
+        {/* Ridhi's own journey card */}
+        <a
+          href="https://www.instagram.com/p/DbV6s6gj-7c/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-8 flex items-center gap-4 rounded-2xl bg-ink-900 p-4 text-left shadow-[0_16px_36px_-16px_rgba(29,24,20,0.5)] transition-all duration-200 hover:-translate-y-0.5"
+        >
+          <span className="relative block h-20 w-16 shrink-0 overflow-hidden rounded-xl ring-1 ring-gold-400/40">
+            <Image
+              src="/images/ig-ridhi-13kg.jpg"
+              alt="Coach Ridhi's own transformation — 13 kgs down"
+              fill
+              className="object-cover object-top"
+              sizes="64px"
+            />
+          </span>
+          <span className="min-w-0">
+            <span className="block text-[9.5px] font-extrabold uppercase tracking-[0.24em] text-gold-400">
+              Coach&apos;s own journey
+            </span>
+            <span className="font-display mt-1 block text-lg font-semibold leading-tight text-cream-50">
+              Ridhi herself — 13 kg down
+            </span>
+            <span className="mt-1 block text-[12px] font-semibold text-cream-100/60">
+              The method she coaches is the method she lived →
+            </span>
+          </span>
+        </a>
+
         <div className="mt-10 text-center">
           <p className="text-[10px] font-extrabold uppercase tracking-[0.3em] text-clay-600">
             Watch · Straight from Ridhi
