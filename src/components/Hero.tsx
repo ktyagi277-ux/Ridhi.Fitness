@@ -21,8 +21,8 @@ export default function Hero() {
       <header className="sticky top-0 z-50 border-b border-ink-900/8 bg-cream-50/85 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 sm:px-8">
           <a href="#top" className="group flex items-center gap-3">
-            <span className="relative h-10 w-10 overflow-hidden rounded-full ring-2 ring-clay-500/30">
-              <Image src="/images/ridhi-profile.jpg" alt="Coach Ridhi Jain" fill className="object-cover" sizes="40px" priority />
+            <span className="relative h-10 w-10 overflow-hidden rounded-full shadow-sm ring-2 ring-gold-500/50">
+              <Image src="/images/rj-logo.jpg" alt="RJ Fitness — Coach Ridhi Jain" fill className="object-cover" sizes="40px" priority />
             </span>
             <span className="leading-none">
               <span className="font-display block text-lg font-semibold tracking-tight">Ridhi Jain</span>

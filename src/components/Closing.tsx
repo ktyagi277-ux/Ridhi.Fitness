@@ -1,8 +1,11 @@
+import Image from "next/image";
 import { Check, X, ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import CornerAccent from "@/components/CornerAccent";
 import LeadForm from "@/components/LeadForm";
 import Faq from "@/components/Faq";
-import { InstagramIcon } from "@/components/icons";
+import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
+import { waLink } from "@/lib/site";
 
 const IG_URL = "https://www.instagram.com/coachridhijain";
 
@@ -115,11 +118,19 @@ export function SiteFaq() {
 }
 
 export function Footer() {
+  const wa = waLink("Hi Ridhi! I have a question about the 12-week program.");
   return (
-    <footer className="border-t border-cream-100/10 bg-ink-950 pb-28 pt-14 md:pb-14">
-      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+    <footer className="relative overflow-hidden border-t border-cream-100/10 bg-ink-950 pb-28 pt-14 md:pb-14">
+      {/* fitness-themed corner accents */}
+      <CornerAccent className="pointer-events-none absolute -bottom-1 -left-1 h-44 w-44 opacity-45 sm:h-64 sm:w-64" />
+      <CornerAccent className="pointer-events-none absolute -bottom-1 -right-1 h-44 w-44 -scale-x-100 opacity-45 sm:h-64 sm:w-64" />
+
+      <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
+            <span className="relative mb-4 block h-14 w-14 overflow-hidden rounded-full ring-2 ring-gold-400/40">
+              <Image src="/images/rj-logo.jpg" alt="RJ Fitness logo" fill className="object-cover" sizes="56px" />
+            </span>
             <p className="font-display text-2xl font-semibold text-cream-50">Ridhi Jain</p>
             <p className="mt-1 text-[10px] font-extrabold uppercase tracking-[0.3em] text-clay-400">
               Fat Loss Coach for Women
@@ -136,7 +147,11 @@ export function Footer() {
               <li><a href="#results" className="transition hover:text-clay-400">Results</a></li>
               <li><a href="#about" className="transition hover:text-clay-400">About Ridhi</a></li>
               <li><a href="#faq" className="transition hover:text-clay-400">FAQ</a></li>
+              <li><a href="/coaching-offer.pdf" target="_blank" rel="noopener noreferrer" className="transition hover:text-clay-400">Coaching Offer (PDF)</a></li>
               <li><a href="/privacy" className="transition hover:text-clay-400">Privacy Policy</a></li>
+              <li><a href="/terms" className="transition hover:text-clay-400">Terms &amp; Conditions</a></li>
+              <li><a href="/refund-policy" className="transition hover:text-clay-400">Refund Policy</a></li>
+              <li><a href="/contact" className="transition hover:text-clay-400">Contact Us</a></li>
             </ul>
           </div>
           <div>
@@ -147,6 +162,13 @@ export function Footer() {
                   <InstagramIcon className="h-4 w-4" /> @coachridhijain
                 </a>
               </li>
+              {wa && (
+                <li>
+                  <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition hover:text-clay-400">
+                    <WhatsAppIcon className="h-4 w-4" /> WhatsApp us
+                  </a>
+                </li>
+              )}
               <li><a href="#apply" className="transition hover:text-clay-400">Book a free call</a></li>
               <li><span className="text-cream-100/40">Mon–Sat · 10 am – 7 pm IST</span></li>
             </ul>
