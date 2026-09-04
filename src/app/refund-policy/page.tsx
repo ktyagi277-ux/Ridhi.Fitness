@@ -4,15 +4,16 @@ import { ArrowLeft, ReceiptText } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Refund & Cancellation Policy | Coach Ridhi Jain",
-  description: "Refund and cancellation policy for the Metabolic Reset Method™ 12-week coaching program.",
+  description: "Refund and cancellation policy for the Metabolic Reset Method™ Guided and Elite coaching plans.",
   robots: { index: false, follow: true },
+  alternates: { canonical: "/refund-policy" },
 };
 
 const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "1. The short version",
     body: [
-      "The free strategy call costs nothing and commits you to nothing. The 12-week program is a personalised 1:1 coaching service — once your custom plan is built and onboarding begins, the fee is non-refundable. Failed or duplicate payments are always refunded in full.",
+      "The free strategy call costs nothing and commits you to nothing. Every paid plan (Guided or Elite, 30 days to 6 months) is a personalised coaching service — once your custom plan is built and onboarding begins, the fee is non-refundable. Failed or duplicate payments are always refunded in full.",
     ],
   },
   {
@@ -38,7 +39,7 @@ const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "5. Pausing the program",
     body: [
-      "If a medical issue, pregnancy or family emergency interrupts your 12 weeks, we can pause your program and resume when you're ready. Message your coach on WhatsApp and we'll work it out — no penalty.",
+      "If a medical issue, pregnancy or family emergency interrupts your plan, we can pause it and resume when you're ready. Message your coach on WhatsApp and we'll work it out — no penalty.",
     ],
   },
   {

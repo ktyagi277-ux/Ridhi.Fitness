@@ -2,11 +2,7 @@ import crypto from "crypto";
 
 const RAZORPAY_API = "https://api.razorpay.com/v1";
 
-/** Program price in INR. Change via PROGRAM_PRICE_INR in .env (rebuild needed). */
-export function getProgramPriceInr(): number {
-  const parsed = Number(process.env.PROGRAM_PRICE_INR);
-  return Number.isFinite(parsed) && parsed > 0 ? Math.round(parsed) : 19999;
-}
+// Plan prices live in src/lib/plans.ts (single source of truth for UI, checkout and JSON-LD).
 
 export function isRazorpayConfigured(): boolean {
   return Boolean(process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET);

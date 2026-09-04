@@ -1,14 +1,12 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useSyncExternalStore, type FormEvent } from "react";
 import { CheckCircle2, CreditCard, Loader2, Lock, ShieldCheck } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { collectUtm } from "@/components/LeadForm";
 import { trackMetaEvent } from "@/components/MetaPixel";
-
-type PaymentCtaProps = {
-  priceInr: number;
-};
+import { getSelectedPlan, getServerSelectedPlan, selectPlan, subscribeSelectedPlan } from "@/components/Pricing";
+import { DEFAULT_PLAN_ID, PLANS, TIERS, formatInr, getPlan } from "@/lib/plans";
 
 type RazorpayResponse = {
   razorpay_order_id: string;
@@ -60,19 +58,23 @@ function loadCheckoutScript(): Promise<boolean> {
   });
 }
 
-export default function PaymentCta({ priceInr }: PaymentCtaProps) {
+export default function PaymentCta() {
+  // Selected plan comes from the Pricing cards, the <select> below, or an ad
+  // deep-link such as /program?plan=elite-90#pay — all via one shared store.
+  const selectedPlanId = useSyncExternalStore(subscribeSelectedPlan, getSelectedPlan, getServerSelectedPlan);
   const [fields, setFields] = useState({ name: "", phone: "", email: "" });
   const [errors, setErrors] = useState<Partial<Record<"name" | "phone" | "email", string>>>({});
   const [formError, setFormError] = useState("");
   const [processing, setProcessing] = useState(false);
   const [success, setSuccess] = useState(false);
 
+  const plan = getPlan(selectedPlanId) ?? getPlan(DEFAULT_PLAN_ID)!;
+  const priceDisplay = formatInr(plan.priceInr);
+
   const set = (key: "name" | "phone" | "email", value: string) => {
     setFields((prev) => ({ ...prev, [key]: value }));
     setErrors((prev) => ({ ...prev, [key]: undefined }));
   };
-
-  const priceDisplay = `₹${priceInr.toLocaleString("en-IN")}`;
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -86,13 +88,18 @@ export default function PaymentCta({ priceInr }: PaymentCtaProps) {
     if (Object.keys(nextErrors).length > 0) return;
 
     setProcessing(true);
-    trackMetaEvent("InitiateCheckout", { content_name: "Metabolic Reset Method", value: priceInr, currency: "INR" });
+    trackMetaEvent("InitiateCheckout", {
+      content_name: plan.name,
+      content_ids: [plan.id],
+      value: plan.priceInr,
+      currency: "INR",
+    });
 
     try {
       const res = await fetch("/api/payment/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...fields, utm: collectUtm() }),
+        body: JSON.stringify({ ...fields, planId: plan.id, utm: collectUtm() }),
       });
       const data = (await res.json()) as {
         ok: boolean;
@@ -105,7 +112,7 @@ export default function PaymentCta({ priceInr }: PaymentCtaProps) {
       };
 
       if (!res.ok || !data.ok || !data.keyId || !data.orderId) {
-        if (data.field) setErrors((prev) => ({ ...prev, [data.field as "name" | "phone" | "email"]: data.error }));
+        if (data.field && data.field in fields) setErrors((prev) => ({ ...prev, [data.field as "name" | "phone" | "email"]: data.error }));
         else setFormError(data.error ?? "Something went wrong. Please try again.");
         setProcessing(false);
         return;
@@ -120,10 +127,10 @@ export default function PaymentCta({ priceInr }: PaymentCtaProps) {
 
       const razorpay = new window.Razorpay({
         key: data.keyId,
-        amount: data.amount ?? priceInr * 100,
+        amount: data.amount ?? plan.priceInr * 100,
         currency: data.currency ?? "INR",
         name: "Coach Ridhi Jain",
-        description: "Metabolic Reset Method™ — 12-Week Program",
+        description: `${plan.name} — Metabolic Reset Method™`,
         order_id: data.orderId,
         prefill: {
           name: fields.name.trim(),
@@ -142,7 +149,12 @@ export default function PaymentCta({ priceInr }: PaymentCtaProps) {
             });
             const verify = (await verifyRes.json()) as { ok: boolean; error?: string };
             if (verifyRes.ok && verify.ok) {
-              trackMetaEvent("Purchase", { content_name: "Metabolic Reset Method", value: priceInr, currency: "INR" });
+              trackMetaEvent("Purchase", {
+                content_name: plan.name,
+                content_ids: [plan.id],
+                value: plan.priceInr,
+                currency: "INR",
+              });
               setSuccess(true);
             } else {
               setFormError(verify.error ?? "Payment verification failed. WhatsApp us with your payment ID.");
@@ -169,7 +181,7 @@ export default function PaymentCta({ priceInr }: PaymentCtaProps) {
   }
 
   return (
-    <section id="pay" className="scroll-mt-24 border-t border-ink-900/8 bg-cream-100 py-20 lg:py-28">
+    <section id="pay" className="scroll-mt-24 border-t border-ink-900/8 bg-cream-50 py-20 lg:py-28">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <div>
           <Reveal>
@@ -178,17 +190,16 @@ export default function PaymentCta({ priceInr }: PaymentCtaProps) {
               Skip the queue — <em className="italic text-clay-600">reserve your spot today.</em>
             </h2>
             <p className="mt-6 max-w-lg text-[16px] leading-relaxed text-ink-600">
-              Already follow Ridhi and know this is for you? Secure your place in the next batch of the
-              12-week Metabolic Reset Method™ right now. Payment is processed securely by Razorpay —
-              UPI, cards and netbanking all work.
+              Already follow Ridhi and know which plan is for you? Pick it below and secure your place in the
+              next batch right now. Payment is processed securely by Razorpay — UPI, cards and netbanking all work.
             </p>
           </Reveal>
           <Reveal delay={120}>
             <ul className="mt-8 space-y-3.5">
               {[
-                "Full 12-week program — meal plans, workouts & weekly 1:1 coaching",
                 "Onboarding call within 24 hours of payment",
-                "Desi-food-approved plans built around your routine",
+                "Custom nutrition & training plan built around your routine",
+                "Strategy overseen by Ridhi on every plan — Guided or Elite",
               ].map((line) => (
                 <li key={line} className="flex items-start gap-3 text-[15px] font-bold text-ink-700">
                   <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-sage-600" strokeWidth={2} />
@@ -209,11 +220,11 @@ export default function PaymentCta({ priceInr }: PaymentCtaProps) {
                 Payment received, {fields.name.split(" ")[0] || "champ"}!
               </h3>
               <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-ink-500">
-                Welcome to the Metabolic Reset Method™. You&apos;ll get a confirmation on WhatsApp and
-                email, and Ridhi&apos;s team will call you within 24 hours to start your onboarding.
+                Welcome to the <strong className="font-bold text-ink-800">{plan.name}</strong> plan. You&apos;ll get a
+                confirmation on WhatsApp and email, and Ridhi&apos;s team will call you within 24 hours to start your onboarding.
               </p>
               <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-ink-400">
-                Your 12-week transformation starts now
+                Your {plan.duration} transformation starts now
               </p>
             </div>
           ) : (
@@ -226,14 +237,39 @@ export default function PaymentCta({ priceInr }: PaymentCtaProps) {
                   </span>
                 </div>
                 <h3 className="font-display text-[26px] font-semibold leading-tight text-ink-900">
-                  Join the 12-week program — <span className="text-clay-600">{priceDisplay}</span>
+                  {plan.name} — <span className="text-clay-600">{priceDisplay}</span>
                 </h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-ink-500">
-                  One-time payment. UPI, cards & netbanking supported.
+                  One-time payment for {plan.duration}. UPI, cards &amp; netbanking supported.
                 </p>
               </div>
 
               <form onSubmit={handleSubmit} noValidate className="space-y-4">
+                <div>
+                  <label htmlFor="pay-plan" className="mb-1.5 block text-[11px] font-extrabold uppercase tracking-[0.16em] text-ink-500">
+                    Your plan
+                  </label>
+                  <select
+                    id="pay-plan"
+                    value={plan.id}
+                    onChange={(e) => selectPlan(e.target.value)}
+                    className="field cursor-pointer"
+                  >
+                    {TIERS.map((tier) => (
+                      <optgroup key={tier.id} label={tier.title}>
+                        {PLANS.filter((p) => p.tier === tier.id).map((p) => (
+                          <option key={p.id} value={p.id}>
+                            {p.name} — {formatInr(p.priceInr)}
+                          </option>
+                        ))}
+                      </optgroup>
+                    ))}
+                  </select>
+                  <a href="#plans" className="mt-1.5 inline-block text-xs font-semibold text-ink-400 underline-offset-2 hover:text-clay-600 hover:underline">
+                    Compare what each plan includes
+                  </a>
+                </div>
+
                 <div>
                   <label htmlFor="pay-name" className="sr-only">Full name</label>
                   <input

@@ -24,6 +24,8 @@ export const payments = pgTable("payments", {
   name: text("name").notNull(),
   email: text("email").notNull(),
   phone: text("phone").notNull(),
+  // Plan id from src/lib/plans.ts (e.g. "elite-90"); nullable for rows created before plans existed
+  plan: text("plan"),
   // Amount in paise (₹1 = 100 paise), as Razorpay expects
   amount: integer("amount").notNull(),
   currency: text("currency").notNull().default("INR"),

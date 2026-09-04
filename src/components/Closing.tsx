@@ -118,7 +118,7 @@ export function SiteFaq() {
 }
 
 export function Footer() {
-  const wa = waLink("Hi Ridhi! I have a question about the 12-week program.");
+  const wa = waLink("Hi Ridhi! I have a question about your coaching plans.");
   return (
     <footer className="relative overflow-hidden border-t border-cream-100/10 bg-ink-950 pb-28 pt-14 md:pb-14">
       {/* fitness-themed corner accents */}
@@ -146,6 +146,7 @@ export function Footer() {
               <li><a href="#method" className="transition hover:text-clay-400">The Method</a></li>
               <li><a href="#results" className="transition hover:text-clay-400">Results</a></li>
               <li><a href="#about" className="transition hover:text-clay-400">About Ridhi</a></li>
+              <li><a href="#plans" className="transition hover:text-clay-400">Plans &amp; Pricing</a></li>
               <li><a href="#faq" className="transition hover:text-clay-400">FAQ</a></li>
               <li><a href="/coaching-offer.pdf" target="_blank" rel="noopener noreferrer" className="transition hover:text-clay-400">Coaching Offer (PDF)</a></li>
               <li><a href="/privacy" className="transition hover:text-clay-400">Privacy Policy</a></li>

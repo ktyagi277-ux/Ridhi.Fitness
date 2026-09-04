@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CalendarCheck, Dumbbell, FileText, HelpCircle, Sparkles, Star } from "lucide-react";
+import { ArrowUpRight, CalendarCheck, Dumbbell, FileText, HelpCircle, IndianRupee, Sparkles, Star } from "lucide-react";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
 import ReelCard from "@/components/ReelCard";
 import CornerAccent from "@/components/CornerAccent";
 import { IG_HANDLE, IG_URL, waLink } from "@/lib/site";
+import { homeJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -33,6 +34,13 @@ export default function Home() {
       href: "/program",
       label: "The Metabolic Reset Method™",
       icon: <Dumbbell className="h-5 w-5" strokeWidth={2} />,
+      external: false,
+      style: "border-2 border-ink-900/10 bg-white text-ink-800 hover:border-clay-400",
+    },
+    {
+      href: "/program#plans",
+      label: "Coaching plans & pricing",
+      icon: <IndianRupee className="h-5 w-5" strokeWidth={2} />,
       external: false,
       style: "border-2 border-ink-900/10 bg-white text-ink-800 hover:border-clay-400",
     },
@@ -81,6 +89,7 @@ export default function Home() {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-cream-50">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }} />
       <div aria-hidden className="pointer-events-none absolute -left-32 -top-32 h-[380px] w-[380px] rounded-full bg-clay-100/70 blur-3xl" />
       <div aria-hidden className="pointer-events-none absolute -bottom-32 -right-32 h-[380px] w-[380px] rounded-full bg-sage-100/80 blur-3xl" />
 

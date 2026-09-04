@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { PLAN_IDS } from "@/lib/plans";
 
 export const GOAL_OPTIONS = [
   "3–5 kg — just want to feel lighter",
@@ -62,6 +63,7 @@ export const paymentOrderSchema = z.object({
     .string()
     .trim()
     .regex(/^\+?[0-9\s\-()]{10,16}$/, "Please enter a valid 10-digit WhatsApp number"),
+  planId: z.enum(PLAN_IDS, { message: "Please pick a plan" }),
   utm: z.record(z.string(), z.string().max(300)).optional(),
 });
 

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy | Coach Ridhi Jain",
   description: "How we collect, use and protect your information when you enquire about the program.",
   robots: { index: false, follow: true },
+  alternates: { canonical: "/privacy" },
 };
 
 const SECTIONS: { title: string; body: string[] }[] = [

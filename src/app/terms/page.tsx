@@ -6,19 +6,20 @@ export const metadata: Metadata = {
   title: "Terms & Conditions | Coach Ridhi Jain",
   description: "Terms and conditions for the Metabolic Reset Method™ coaching program and this website.",
   robots: { index: false, follow: true },
+  alternates: { canonical: "/terms" },
 };
 
 const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "1. About these terms",
     body: [
-      "These terms apply to your use of this website and your enrolment in the Metabolic Reset Method™ — a 12-week online fitness and nutrition coaching program run by Coach Ridhi Jain (\"we\", \"us\"). By enquiring, booking a call or purchasing the program, you agree to these terms.",
+      "These terms apply to your use of this website and your enrolment in the Metabolic Reset Method™ — the online fitness and nutrition coaching programs (Guided and Elite plans of 30 days to 6 months) run by Coach Ridhi Jain (\"we\", \"us\"). By enquiring, booking a call or purchasing any plan, you agree to these terms.",
     ],
   },
   {
     title: "2. What the program is",
     body: [
-      "The program provides personalised nutrition guidance, home workout plans, habit coaching, weekly 1:1 check-ins and WhatsApp support for a period of 12 weeks from your onboarding date.",
+      "Each plan provides personalised nutrition guidance, home workout plans, habit coaching, scheduled check-ins or calls and WhatsApp support for the duration you purchased (30, 60 or 90 days, or 6 months), counted from your onboarding date. The exact inclusions of each plan — number of calls, who conducts them, and support level — are listed on the Plans section of the website at the time of purchase.",
       "It is a coaching and educational service. It is not medical treatment, and no specific weight-loss outcome is guaranteed — results depend on your consistency, adherence, medical history and individual body response.",
     ],
   },

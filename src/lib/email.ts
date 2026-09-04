@@ -1,4 +1,5 @@
 import type { Enquiry, Payment } from "@/db/schema";
+import { getPlan } from "@/lib/plans";
 
 function esc(value: unknown): string {
   return String(value ?? "")
@@ -54,15 +55,18 @@ function buildHtml(lead: Enquiry): string {
 
 function buildPaymentHtml(payment: Payment): string {
   const amountInr = (payment.amount / 100).toLocaleString("en-IN");
+  const plan = getPlan(payment.plan);
+  const planLabel = plan ? `${plan.name} (${plan.duration})` : payment.plan ?? "Metabolic Reset Method";
   return `<!doctype html>
 <html>
 <body style="margin:0;padding:0;background:#F6F1E8;font-family:Georgia,serif;">
   <div style="max-width:560px;margin:24px auto;background:#FBF8F3;border:1px solid #EDE5D6;border-radius:16px;overflow:hidden;">
     <div style="background:#1D1814;color:#FBF8F3;padding:20px 24px;">
       <div style="font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:#5E7B5A;font-weight:700;">Payment Received — coachridhijain.com</div>
-      <div style="font-size:22px;margin-top:6px;">${esc(payment.name)} paid ₹${esc(amountInr)}</div>
+      <div style="font-size:22px;margin-top:6px;">${esc(payment.name)} paid ₹${esc(amountInr)} — ${esc(planLabel)}</div>
     </div>
     <table style="width:100%;border-collapse:collapse;">
+      ${row("Plan", planLabel)}
       ${row("Amount", `₹${amountInr} ${payment.currency}`)}
       ${row("Phone / WhatsApp", payment.phone)}
       ${row("Email", payment.email)}
@@ -91,7 +95,8 @@ export async function sendEnquiryEmail(lead: Enquiry): Promise<void> {
 /** Sends the payment notification email. Never throws. */
 export async function sendPaymentEmail(payment: Payment): Promise<void> {
   const amountInr = (payment.amount / 100).toLocaleString("en-IN");
-  const subject = `💰 Payment Received: ₹${amountInr} from ${payment.name}`;
+  const plan = getPlan(payment.plan);
+  const subject = `💰 Payment Received: ₹${amountInr} from ${payment.name}${plan ? ` — ${plan.name}` : ""}`;
   await deliverEmail(subject, buildPaymentHtml(payment), `${payment.name} ${payment.phone}`);
 }
 

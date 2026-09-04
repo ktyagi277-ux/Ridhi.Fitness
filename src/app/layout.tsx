@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Ridhi Jain | Nutritionist | Fat Loss Coach for Working Women",
   description:
-    "The Metabolic Reset Method™: a hormone-friendly fat-loss program for working women. Desi food, 30-min home workouts, 1:1 coaching by Ridhi Jain (@coachridhijain). Book your free strategy call.",
+    "Online fat loss coach for working women in India. Hormone-friendly plans, desi food, 30-min home workouts, 1:1 coaching by Ridhi Jain. Free strategy call.",
   keywords: [
     "fat loss coach for women",
     "weight loss program india",

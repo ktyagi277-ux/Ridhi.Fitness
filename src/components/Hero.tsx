@@ -33,6 +33,7 @@ export default function Hero() {
             <a href="#method" className="link-lux transition-colors hover:text-ink-900">Method</a>
             <a href="#results" className="link-lux transition-colors hover:text-ink-900">Results</a>
             <a href="#about" className="link-lux transition-colors hover:text-ink-900">About</a>
+            <a href="#plans" className="link-lux transition-colors hover:text-ink-900">Plans</a>
             <a href="#faq" className="link-lux transition-colors hover:text-ink-900">FAQ</a>
           </nav>
           <div className="flex items-center gap-3">
@@ -67,7 +68,7 @@ export default function Hero() {
             <Reveal>
               <div className="inline-flex items-center gap-2.5 rounded-full border border-ink-900/10 bg-white/70 px-4 py-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-sage-600" />
-                <span className="eyebrow text-ink-600">For working women · 12-week program</span>
+                <span className="eyebrow text-ink-600">Online fat loss coach for working women · India</span>
               </div>
             </Reveal>
 
@@ -132,7 +133,7 @@ export default function Hero() {
                     ))}
                     <span className="ml-1.5 text-sm font-extrabold text-ink-900">4.9/5</span>
                   </div>
-                  <p className="text-xs font-semibold text-ink-500">from 500+ coached women</p>
+                  <p className="text-xs font-semibold text-ink-500">from 1,000+ coached women</p>
                 </div>
                 <a href={IG_URL} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 rounded-full border border-ink-900/10 bg-white/70 px-4 py-2 transition hover:border-clay-400">
                   <InstagramIcon className="h-4 w-4 text-clay-600" />

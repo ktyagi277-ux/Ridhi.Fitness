@@ -41,7 +41,7 @@ export default function Comparison() {
           Why a coach — not another <em className="italic text-clay-600">PDF, app or ChatGPT plan.</em>
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-center text-[15px] leading-relaxed text-ink-500">
-          You've probably tried at least one of these. Here's exactly where they fall short.
+          You&apos;ve probably tried at least one of these. Here&apos;s exactly where they fall short.
         </p>
       </Reveal>
 

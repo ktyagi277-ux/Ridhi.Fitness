@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/db";
 import { payments } from "@/db/schema";
 import { paymentOrderSchema } from "@/lib/validation";
-import { createRazorpayOrder, getProgramPriceInr, isRazorpayConfigured } from "@/lib/razorpay";
+import { createRazorpayOrder, isRazorpayConfigured } from "@/lib/razorpay";
+import { getPlan } from "@/lib/plans";
 
 export const dynamic = "force-dynamic";
 
@@ -67,21 +68,27 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { name, email, phone, utm } = parsed.data;
-  const amountPaise = getProgramPriceInr() * 100;
+  const { name, email, phone, planId, utm } = parsed.data;
+  // Price is always resolved server-side from the plan catalogue — never from the client.
+  const plan = getPlan(planId);
+  if (!plan) {
+    return NextResponse.json({ ok: false, error: "Please pick a plan.", field: "planId" }, { status: 422 });
+  }
+  const amountPaise = plan.priceInr * 100;
 
   try {
-    const receipt = `mrm_${Date.now().toString(36)}`;
+    const receipt = `${plan.id}_${Date.now().toString(36)}`;
     const order = await createRazorpayOrder({
       amountPaise,
       receipt,
-      notes: { name, email, phone, program: "Metabolic Reset Method — 12 weeks" },
+      notes: { name, email, phone, plan: plan.id, program: `${plan.name} — Metabolic Reset Method` },
     });
 
     await db.insert(payments).values({
       name,
       email,
       phone,
+      plan: plan.id,
       amount: order.amount,
       currency: order.currency,
       razorpayOrderId: order.id,

@@ -13,59 +13,21 @@ import ConditionTabs from "@/components/ConditionTabs";
 import Roadmap from "@/components/Roadmap";
 import Quiz from "@/components/Quiz";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import { FAQS } from "@/lib/faqs";
-import { getProgramPriceInr, isRazorpayConfigured } from "@/lib/razorpay";
+import Pricing from "@/components/Pricing";
+import { programJsonLd } from "@/lib/jsonld";
+import { isRazorpayConfigured } from "@/lib/razorpay";
 
 export const metadata: Metadata = {
+  title: "Fat Loss Coaching Plans & Pricing | Coach Ridhi Jain",
+  description:
+    "Hormone-friendly fat loss for working women — desi food, 30-min home workouts. Guided plans from ₹5,999, Elite 1:1 coaching with Ridhi from ₹19,999.",
   alternates: { canonical: "/program" },
-};
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://coachridhijain.com";
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": `${siteUrl}/#person`,
-      name: "Ridhi Jain",
-      url: siteUrl,
-      image: `${siteUrl}/images/coach-hero.png`,
-      jobTitle: "Fat Loss Coach & Nutritionist",
-      description:
-        "Fat loss coach for working women. The Metabolic Reset Method™ helps women lose 8–10 kgs in 12 weeks with hormone-friendly, desi-food-approved plans.",
-      sameAs: ["https://www.instagram.com/coachridhijain"],
-      knowsAbout: ["Weight loss", "Nutrition", "PCOS", "Women's hormonal health", "Metabolic health"],
-    },
-    {
-      "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
-      url: siteUrl,
-      name: "Coach Ridhi Jain — Metabolic Reset Method",
-      inLanguage: "en-IN",
-      publisher: { "@id": `${siteUrl}/#person` },
-    },
-    {
-      "@type": "Service",
-      "@id": `${siteUrl}/#service`,
-      name: "The Metabolic Reset Method™ — 12-Week Fat Loss Program",
-      serviceType: "Online fitness & nutrition coaching",
-      description:
-        "A 12-week, hormone-friendly fat-loss program for working women with desi-food meal plans, 30-minute home workouts and weekly 1:1 coaching.",
-      provider: { "@id": `${siteUrl}/#person` },
-      areaServed: "IN",
-      url: `${siteUrl}/program#apply`,
-    },
-    {
-      "@type": "FAQPage",
-      "@id": `${siteUrl}/#faq`,
-      mainEntity: FAQS.map((faq) => ({
-        "@type": "Question",
-        name: faq.q,
-        acceptedAnswer: { "@type": "Answer", text: faq.a },
-      })),
-    },
-  ],
+  openGraph: {
+    title: "Lose 8–10 kgs in 12 Weeks — Guided & Elite Coaching Plans",
+    description:
+      "Hormone-friendly fat loss for working women. Guided plans from ₹5,999, Elite coaching with Ridhi from ₹19,999. Free strategy call.",
+    url: "/program",
+  },
 };
 
 export default function ProgramPage() {
@@ -73,7 +35,7 @@ export default function ProgramPage() {
     <main className="overflow-x-clip">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(programJsonLd) }}
       />
       <Hero />
       <Marquee />
@@ -88,9 +50,10 @@ export default function ProgramPage() {
       <Roadmap />
       <Quiz />
       <FitCheck />
+      <Pricing checkoutEnabled={isRazorpayConfigured()} />
       <Faq />
       {/* Payment section only renders once RAZORPAY_KEY_ID / RAZORPAY_KEY_SECRET are set */}
-      {isRazorpayConfigured() && <PaymentCta priceInr={getProgramPriceInr()} />}
+      {isRazorpayConfigured() && <PaymentCta />}
       <FinalCta />
       <Footer />
       <StickyCta />

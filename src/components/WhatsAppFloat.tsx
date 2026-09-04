@@ -6,7 +6,7 @@ import { trackMetaEvent } from "@/components/MetaPixel";
 
 export default function WhatsAppFloat() {
   const href = waLink(
-    "Hi Ridhi! I saw your website and want to know more about the 12-week Metabolic Reset program."
+    "Hi Ridhi! I saw your website and want to know more about your Metabolic Reset coaching plans."
   );
   if (!href) return null;
 

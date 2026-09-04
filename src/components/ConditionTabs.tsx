@@ -52,8 +52,6 @@ const CONDITIONS: Condition[] = [
 
 export default function ConditionTabs() {
   const [active, setActive] = useState(0);
-  const condition = CONDITIONS[active];
-  const wa = waLink(condition.waMessage);
 
   return (
     <section className="border-y border-ink-900/8 bg-cream-100 py-20 lg:py-24">
@@ -76,6 +74,7 @@ export default function ConditionTabs() {
                 type="button"
                 onClick={() => setActive(i)}
                 aria-pressed={i === active}
+                aria-controls={`condition-${i}`}
                 className={`rounded-full border-2 px-5 py-2.5 text-[13px] font-extrabold uppercase tracking-[0.08em] transition-all duration-300 sm:px-6 ${
                   i === active
                     ? "border-clay-600 bg-clay-600 text-cream-50 shadow-[0_12px_24px_-10px_rgba(180,72,32,0.6)]"
@@ -88,42 +87,53 @@ export default function ConditionTabs() {
           </div>
         </Reveal>
 
+        {/* All four panels are server-rendered (crawlable); only the active one is shown */}
         <Reveal delay={200}>
-          <div className="mx-auto mt-8 max-w-3xl rounded-3xl border border-ink-900/8 bg-white p-8 shadow-[0_24px_48px_-24px_rgba(29,24,20,0.18)] sm:p-10">
-            <h3 className="font-display text-2xl font-semibold leading-snug tracking-tight sm:text-3xl">
-              {condition.headline}
-            </h3>
-            <p className="mt-4 text-[15.5px] leading-relaxed text-ink-500">{condition.body}</p>
-            <div className="mt-5 rounded-2xl bg-sage-100/60 p-5">
-              <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-sage-700">
-                How your plan adapts
-              </p>
-              <p className="mt-2 text-[15px] leading-relaxed text-ink-700">{condition.adapt}</p>
-            </div>
-            <div className="mt-7 flex flex-wrap items-center gap-4">
-              {wa ? (
-                <a
-                  href={wa}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackMetaEvent("Contact", { placement: `condition_${condition.label}` })}
-                  className="inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-6 py-3.5 text-[13px] font-extrabold uppercase tracking-[0.08em] text-white transition hover:brightness-95"
-                >
-                  <WhatsAppIcon className="h-4.5 w-4.5" /> Talk about {condition.label}
-                </a>
-              ) : (
-                <a
-                  href="#apply"
-                  className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-[13px] font-extrabold uppercase tracking-[0.08em] text-cream-50 transition hover:bg-clay-600"
-                >
-                  Book your free call <ArrowRight className="h-4 w-4" />
-                </a>
-              )}
-              <p className="text-xs font-semibold text-ink-400">
-                No obligation — just an honest conversation about your body.
-              </p>
-            </div>
-          </div>
+          {CONDITIONS.map((condition, i) => {
+            const wa = waLink(condition.waMessage);
+            return (
+              <div
+                key={condition.label}
+                id={`condition-${i}`}
+                hidden={i !== active}
+                className="mx-auto mt-8 max-w-3xl rounded-3xl border border-ink-900/8 bg-white p-8 shadow-[0_24px_48px_-24px_rgba(29,24,20,0.18)] sm:p-10"
+              >
+                <h3 className="font-display text-2xl font-semibold leading-snug tracking-tight sm:text-3xl">
+                  {condition.headline}
+                </h3>
+                <p className="mt-4 text-[15.5px] leading-relaxed text-ink-500">{condition.body}</p>
+                <div className="mt-5 rounded-2xl bg-sage-100/60 p-5">
+                  <p className="text-[11px] font-extrabold uppercase tracking-[0.18em] text-sage-700">
+                    How your plan adapts
+                  </p>
+                  <p className="mt-2 text-[15px] leading-relaxed text-ink-700">{condition.adapt}</p>
+                </div>
+                <div className="mt-7 flex flex-wrap items-center gap-4">
+                  {wa ? (
+                    <a
+                      href={wa}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => trackMetaEvent("Contact", { placement: `condition_${condition.label}` })}
+                      className="inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-6 py-3.5 text-[13px] font-extrabold uppercase tracking-[0.08em] text-white transition hover:brightness-95"
+                    >
+                      <WhatsAppIcon className="h-4.5 w-4.5" /> Talk about {condition.label}
+                    </a>
+                  ) : (
+                    <a
+                      href="#apply"
+                      className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-[13px] font-extrabold uppercase tracking-[0.08em] text-cream-50 transition hover:bg-clay-600"
+                    >
+                      Book your free call <ArrowRight className="h-4 w-4" />
+                    </a>
+                  )}
+                  <p className="text-xs font-semibold text-ink-400">
+                    No obligation — just an honest conversation about your body.
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </Reveal>
       </div>
     </section>

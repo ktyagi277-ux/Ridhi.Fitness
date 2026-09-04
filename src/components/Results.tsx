@@ -137,7 +137,7 @@ export function Transformations() {
               </h2>
             </div>
             <p className="max-w-xs text-sm font-semibold leading-relaxed text-ink-400">
-              1,000+ transformations and counting — across PCOS, thyroid, postpartum and desk-bound lives.
+              1,000+ transformations and counting — PCOS, thyroid, postpartum, brides-to-be and desk-bound 9-to-9 lives.
             </p>
           </div>
         </Reveal>

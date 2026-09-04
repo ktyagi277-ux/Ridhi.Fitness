@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Contact | Coach Ridhi Jain",
   description: "Reach the Coach Ridhi Jain team on Instagram or WhatsApp — replies within 24 hours, Mon–Sat.",
   robots: { index: false, follow: true },
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

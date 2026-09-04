@@ -38,7 +38,7 @@ export default function Roadmap() {
             Exactly what happens <em className="italic text-clay-600">after you join.</em>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-center text-[15px] leading-relaxed text-ink-500">
-            Most coaching feels like a mystery until you've paid. Ours is a map — here it is, step by step.
+            Most coaching feels like a mystery until you&apos;ve paid. Ours is a map — here it is, step by step.
           </p>
         </Reveal>
 
@@ -70,7 +70,7 @@ export default function Roadmap() {
               href="#apply"
               className="inline-flex items-center gap-2 rounded-full bg-ink-900 px-7 py-4 text-[13px] font-extrabold uppercase tracking-[0.1em] text-cream-50 transition hover:bg-clay-600"
             >
-              Start at step 1 — it's free
+              Start at step 1 — it&apos;s free
             </a>
           </div>
         </Reveal>

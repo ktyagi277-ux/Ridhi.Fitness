@@ -87,7 +87,7 @@ const STATS = [
   { value: "1,000+", label: "Women coached to a leaner body" },
   { value: "8–10 kg", label: "Average fat loss in 12 weeks" },
   { value: "30 min", label: "Daily home workouts — no gym" },
-  { value: "93%", label: "Keep the weight off a year later" },
+  { value: "1:1", label: "Weekly check-ins with your coach on WhatsApp" },
 ];
 
 export function StatsBand() {

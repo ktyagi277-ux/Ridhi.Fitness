@@ -168,9 +168,9 @@ export default function LeadForm({ id, source, dark = false, compactNote }: Lead
             Free strategy call — ₹1,999 value
           </span>
         </div>
-        <h3 className="font-display text-[26px] font-semibold leading-tight text-ink-900">
+        <h2 className="font-display text-[26px] font-semibold leading-tight text-ink-900">
           Book your <em className="italic text-clay-600">free</em> fat-loss strategy call
-        </h3>
+        </h2>
         <p className="mt-1.5 text-sm leading-relaxed text-ink-500">
           {compactNote ?? "20 minutes. Zero judgement. A clear roadmap for your first 10 kg — whether you join or not."}
         </p>
