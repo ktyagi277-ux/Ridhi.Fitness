@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CalendarCheck, ClipboardList, Dumbbell, FileText, HelpCircle, Sparkles, Star } from "lucide-react";
+import { ArrowUpRight, CalendarCheck, ClipboardList, Dumbbell, HelpCircle, Sparkles, Star } from "lucide-react";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
 import ReelCard from "@/components/ReelCard";
 import CornerAccent from "@/components/CornerAccent";
@@ -56,13 +56,6 @@ export default function Home() {
       label: "60-sec check: how much can you lose?",
       icon: <Sparkles className="h-5 w-5" strokeWidth={2} />,
       external: false,
-      style: "border-2 border-ink-900/10 bg-white text-ink-800 hover:border-clay-400",
-    },
-    {
-      href: "/coaching-offer.pdf",
-      label: "Coaching offer — full details (PDF)",
-      icon: <FileText className="h-5 w-5" strokeWidth={2} />,
-      external: true,
       style: "border-2 border-ink-900/10 bg-white text-ink-800 hover:border-clay-400",
     },
     {

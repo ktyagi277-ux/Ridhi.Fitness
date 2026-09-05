@@ -180,7 +180,6 @@ export function Footer() {
               <li><a href="#about" className="transition hover:text-clay-400">About Ridhi</a></li>
               <li><a href="#plans" className="transition hover:text-clay-400">Coaching Plans</a></li>
               <li><a href="#faq" className="transition hover:text-clay-400">FAQ</a></li>
-              <li><a href="/coaching-offer.pdf" target="_blank" rel="noopener noreferrer" className="transition hover:text-clay-400">Coaching Offer (PDF)</a></li>
               <li><a href="/privacy" className="transition hover:text-clay-400">Privacy Policy</a></li>
               <li><a href="/terms" className="transition hover:text-clay-400">Terms &amp; Conditions</a></li>
               <li><a href="/refund-policy" className="transition hover:text-clay-400">Refund Policy</a></li>
