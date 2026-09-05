@@ -12,6 +12,7 @@ import Roadmap from "@/components/Roadmap";
 import Quiz from "@/components/Quiz";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Pricing from "@/components/Pricing";
+import Includes from "@/components/Includes";
 import TimedOffer from "@/components/TimedOffer";
 import { programJsonLd } from "@/lib/jsonld";
 
@@ -40,6 +41,8 @@ export default function ProgramPage() {
       <Marquee />
       {/* 2. The offer — plans come early so ad traffic sees them immediately */}
       <Pricing />
+      {/* 2b. What every plan includes — illustrated */}
+      <Includes />
       {/* 3. Proof it works */}
       <Transformations />
       <StatsBand />
