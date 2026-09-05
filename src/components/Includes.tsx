@@ -157,35 +157,36 @@ const ITEMS = [
 
 export default function Includes() {
   return (
-    <section id="includes" className="scroll-mt-24 py-20 lg:py-24">
+    <section id="includes" className="scroll-mt-24 py-16 lg:py-24">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
           <p className="eyebrow text-center text-clay-600">What you get</p>
-          <h2 className="font-display mx-auto mt-4 max-w-2xl text-center text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
+          <h2 className="font-display mx-auto mt-4 max-w-2xl text-center text-3xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
             Every plan <em className="italic text-clay-600">includes</em>
           </h2>
+          <p className="mx-auto mt-3 max-w-lg text-center text-[14.5px] leading-relaxed text-ink-500">
+            The essentials that come with Guided and Elite plans alike.
+          </p>
         </Reveal>
 
-        <div className="mx-auto mt-12 grid max-w-5xl grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3">
+        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {ITEMS.map(({ Icon, label, note }, i) => (
-            <Reveal key={label} delay={i * 70}>
-              <div className="flex flex-col items-center text-center">
-                <div className="h-36 w-36 sm:h-40 sm:w-40">
+            <Reveal key={label} delay={i * 60} className="h-full">
+              <div className="flex h-full flex-col items-center rounded-2xl border border-ink-900/8 bg-white px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-clay-200 hover:shadow-[0_20px_40px_-24px_rgba(29,24,20,0.25)] sm:px-6 sm:py-8">
+                <div className="h-20 w-20 sm:h-24 sm:w-24">
                   <Icon />
                 </div>
-                <span className="mt-4 rounded-xl bg-ink-900 px-4 py-2 text-[11px] font-extrabold uppercase leading-snug tracking-[0.14em] text-cream-50">
-                  {label}
-                </span>
-                <p className="mt-2.5 max-w-[200px] text-[13px] leading-relaxed text-ink-500">{note}</p>
+                <h3 className="mt-4 text-[13px] font-extrabold leading-snug text-ink-900 sm:text-[15px]">{label}</h3>
+                <p className="mt-1.5 text-[12px] leading-relaxed text-ink-500 sm:text-[13px]">{note}</p>
               </div>
             </Reveal>
           ))}
         </div>
 
         <Reveal delay={200}>
-          <p className="mx-auto mt-12 max-w-xl text-center text-[14px] leading-relaxed text-ink-500">
-            Plus habit coaching, travel & festival guidelines, and a plan that is built only after a proper
-            onboarding questionnaire — never a copy-paste template.
+          <p className="mx-auto mt-8 max-w-xl text-center text-[12.5px] leading-relaxed text-ink-400 sm:text-[13.5px]">
+            Plus habit coaching, travel &amp; festival guidelines, and a plan built only after a proper onboarding
+            questionnaire — never a copy-paste template.
           </p>
         </Reveal>
       </div>
