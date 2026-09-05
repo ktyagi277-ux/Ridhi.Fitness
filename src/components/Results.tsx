@@ -1,14 +1,15 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
+import { InstagramIcon } from "@/components/icons";
 
 type Slide = {
   image: string;
   alt: string;
   name: string;
+  /** One short line under the name — keep it under ~5 words */
   role: string;
+  /** Badge on the photo, e.g. "72 → 60 kg" */
   result: string;
-  tags: string[];
-  quote: string;
   href?: string;
   imgClass?: string;
   /** Instagram reel/post URL to embed as a live player instead of a still image */
@@ -23,10 +24,8 @@ const SLIDES: Slide[] = [
     image: "/images/ig-postpartum-12kg.jpg",
     alt: "Postpartum mom before and after — 72 to 60 kg in 4 months, 5 months post C-section",
     name: "Meera",
-    role: "Mom of 2 · 5 months post C-section",
+    role: "Mom of 2 · 4 months",
     result: "72 → 60 kg",
-    tags: ["Postpartum", "4 months"],
-    quote: "Postpartum didn't get easier — she got the right support. 12 kgs down while breastfeeding, with two kids at home.",
     href: "https://www.instagram.com/p/DcgdJUKjzDV/",
   },
   {
@@ -35,8 +34,6 @@ const SLIDES: Slide[] = [
     name: "Akanksha",
     role: "New mom · 3 months",
     result: "12 kgs down",
-    tags: ["3 months", "Mom life"],
-    quote: "Three months, twelve kgs — with a toddler on her hip the whole way.",
     href: "https://www.instagram.com/p/DWbYAMLD3cR/",
     imgClass: "object-top",
   },
@@ -44,10 +41,8 @@ const SLIDES: Slide[] = [
     image: "/images/ig-mom-of-2-90days.jpg",
     alt: "Mother of two before and after — 88 to 77.5 kg in 90 days, 3 months postpartum",
     name: "Anjali",
-    role: "Mother of 2 · 3 months postpartum",
+    role: "Mom of 2 · 90 days",
     result: "88 → 77.5 kg",
-    tags: ["No cook", "~13 inches"],
-    quote: "No cook. No special food. Two kids. Zero time. She still lost 10.5 kg and 13 inches in 90 days.",
     href: "https://www.instagram.com/p/DZxS9aKj53k/",
   },
   {
@@ -55,10 +50,8 @@ const SLIDES: Slide[] = [
     embed: "https://www.instagram.com/reel/DBBfgSkz5eD/embed/",
     alt: "Client transformation reel from @coachridhijain",
     name: "New mom · 60 days",
-    role: "Watch the reel",
-    result: "▶ 60-day transformation",
-    tags: ["Reel", "Postpartum"],
-    quote: "60 days, one new mom — tap play and watch the change happen.",
+    role: "Watch on Instagram",
+    result: "▶ 60-day reel",
     href: "https://www.instagram.com/reel/DBBfgSkz5eD/",
   },
   {
@@ -67,78 +60,62 @@ const SLIDES: Slide[] = [
     name: "Priya",
     role: "Working professional",
     result: "Before → After",
-    tags: ["Visible change"],
-    quote: "Same smile, lighter body — the kind of change you can see from across the room.",
     href: "https://www.instagram.com/p/DRcG82uj-JU/",
   },
   {
     image: "/images/ig-client-peach-mint.jpg",
     alt: "Neha before and after — same room, months apart",
     name: "Neha",
-    role: "Busy mom · Home workouts",
+    role: "Busy mom",
     result: "Before → After",
-    tags: ["Home workouts"],
-    quote: "Nothing extreme. Just a plan that fit around real life at home.",
     href: "https://www.instagram.com/p/DW0UTI2j5UD/",
   },
   {
     image: "/images/ig-client-nike.jpg",
     alt: "Rahul before and after — same t-shirt, months apart",
     name: "Rahul",
-    role: "Same t-shirt, months apart",
+    role: "Same tee, months apart",
     result: "Before → After",
-    tags: ["Men's fat loss"],
-    quote: "Same t-shirt, months apart. Desi food, home workouts, no gym membership.",
     href: "https://www.instagram.com/p/DQrL0BJj_LD/",
   },
   {
     image: "/images/ig-client-floral-coral.jpg",
     alt: "Shreya before and after transformation",
     name: "Shreya",
-    role: "Slow, steady & sustainable",
+    role: "Steady & sustainable",
     result: "Before → After",
-    tags: ["Sustainable"],
-    quote: "No crash diet, no rebound — steady weeks that added up to a different body.",
     href: "https://www.instagram.com/p/DO0ouQFj7Re/",
   },
   {
     image: "/images/ig-client-blue-tee.jpg",
     alt: "Pooja before and after — coached online, same tee",
     name: "Pooja",
-    role: "Coached completely online",
+    role: "Coached online",
     result: "Before → After",
-    tags: ["Online coaching"],
-    quote: "Coached entirely on WhatsApp and calls — same tee, a completely different posture.",
     href: "https://www.instagram.com/p/DKt_pF_Tcmn/",
   },
   {
     image: "/images/ig-client-yellow.jpg",
     alt: "Kavita before and after — same pyjamas, new body",
     name: "Kavita",
-    role: "Same pyjamas, new body",
+    role: "Same outfit, new body",
     result: "Before → After",
-    tags: ["Inch loss"],
-    quote: "Same pyjamas. The difference is everything else.",
     href: "https://www.instagram.com/p/DNGA54pvE9I/",
   },
   {
     image: "/images/ig-ayushi-bride.jpg",
     alt: "Ayushi before and after — 5.5 kgs down before her July wedding, same dress",
     name: "Ayushi",
-    role: "Bride-to-be · July 2026",
+    role: "Bride-to-be",
     result: "66.5 → 61 kg",
-    tags: ["Wedding deadline", "No crash diet"],
-    quote: "She didn't buy a new wardrobe for her wedding — she built the body that filled the old one beautifully.",
     href: "https://www.instagram.com/p/DZXgNE-Dzbu/",
   },
   {
     image: "/images/ig-hitesh-transformation.jpg",
     alt: "Hitesh before and after — lost 10 kgs in 2.5 months before his engagement",
     name: "Hitesh",
-    role: "Groom-to-be · Engagement prep",
+    role: "Groom-to-be · 2.5 months",
     result: "98 → 88 kg",
-    tags: ["Vegetarian", "2.5 months"],
-    quote: "He lost 10 kgs before his engagement — but the biggest transformation wasn't visible on the scale.",
     href: "https://www.instagram.com/p/DbLoWdwj5Li/",
   },
 ];
@@ -182,23 +159,22 @@ function PhotoCard({ t }: { t: Slide }) {
           {t.result}
         </span>
       </div>
-      <div className="flex flex-1 flex-col p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <h3 className="font-display text-xl font-semibold">{t.name}</h3>
-            <p className="text-xs font-bold uppercase tracking-[0.1em] text-ink-400">{t.role}</p>
-          </div>
-          <div className="flex flex-wrap gap-1">
-            {t.tags.map((tag) => (
-              <span key={tag} className="rounded-full bg-sage-100 px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wide text-sage-700">
-                {tag}
-              </span>
-            ))}
-          </div>
+      <div className="flex items-center justify-between gap-3 px-5 py-4">
+        <div className="min-w-0">
+          <h3 className="font-display truncate text-lg font-semibold leading-tight text-ink-900">{t.name}</h3>
+          <p className="mt-0.5 truncate text-[11px] font-bold uppercase tracking-[0.12em] text-ink-400">{t.role}</p>
         </div>
-        <p className="mt-4 border-l-2 border-clay-400 pl-4 text-[14px] italic leading-relaxed text-ink-600">
-          &ldquo;{t.quote}&rdquo;
-        </p>
+        {t.href && (
+          <a
+            href={t.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open ${t.name}'s post on Instagram`}
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink-900/10 text-ink-500 transition hover:border-clay-400 hover:text-clay-600"
+          >
+            <InstagramIcon className="h-4 w-4" />
+          </a>
+        )}
       </div>
     </article>
   );
