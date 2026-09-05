@@ -31,3 +31,10 @@ next-env.d.ts
 
 # ssh public key — not needed in the repo
 k.pub
+
+# private keys — never commit
+K
+k
+*.key
+id_*
+!id_*.pub
