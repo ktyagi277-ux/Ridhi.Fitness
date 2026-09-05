@@ -155,9 +155,24 @@ function PhotoCard({ t }: { t: Slide }) {
             sizes="(max-width: 640px) 300px, 360px"
           />
         )}
-        <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-ink-900/85 px-4 py-2 text-[12px] font-extrabold uppercase tracking-[0.08em] text-cream-50 backdrop-blur">
-          {t.result}
-        </span>
+        {/* kg / reel badge — only when there is a real number or a video to call out */}
+        {t.result !== "Before → After" && (
+          <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-ink-900/85 px-4 py-2 text-[12px] font-extrabold uppercase tracking-[0.08em] text-cream-50 backdrop-blur">
+            {t.result}
+          </span>
+        )}
+        {/* BEFORE / AFTER labels on their own halves of the photo */}
+        {!t.embed && (
+          <>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-950/70 to-transparent" />
+            <span className="pointer-events-none absolute bottom-4 left-4 rounded-full border border-cream-50/25 bg-ink-900/85 px-3.5 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.2em] text-cream-100 backdrop-blur">
+              Before
+            </span>
+            <span className="pointer-events-none absolute bottom-4 right-4 rounded-full bg-sage-600 px-3.5 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white shadow-[0_8px_20px_-8px_rgba(0,0,0,0.6)]">
+              After
+            </span>
+          </>
+        )}
       </div>
       <div className="flex items-center justify-between gap-3 px-5 py-4">
         <div className="min-w-0">
