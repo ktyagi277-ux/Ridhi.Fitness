@@ -19,7 +19,7 @@ const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "2. What the program is",
     body: [
-      "Each plan provides personalised nutrition guidance, home workout plans, habit coaching, scheduled check-ins or calls and WhatsApp support for the duration you purchased (30, 60 or 90 days, or 6 months), counted from your onboarding date. The exact inclusions of each plan — number of calls, who conducts them, and support level — are listed on the Plans section of the website at the time of purchase.",
+      "Each plan provides personalised nutrition guidance, home workout plans, habit coaching, scheduled check-ins or calls and WhatsApp support for the duration you purchased (30, 60 or 90 days, or 6 months), counted from your onboarding date. The exact inclusions of each plan — number of calls, who conducts them, and support level — are listed on the Plans section of the website at the time of enrolment.",
       "It is a coaching and educational service. It is not medical treatment, and no specific weight-loss outcome is guaranteed — results depend on your consistency, adherence, medical history and individual body response.",
     ],
   },
@@ -33,14 +33,14 @@ const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "4. Payments",
     body: [
-      "Program fees are listed on this website in Indian Rupees and are payable one-time in full through our secure payment partner, Razorpay (UPI, cards, netbanking). We never see or store your card details.",
-      "Your enrolment is confirmed once payment is successful, and onboarding begins within 24 hours of payment.",
+      "Program fees are not listed on this website. After your free strategy call, the team shares the fee for your recommended plan on WhatsApp. Fees are in Indian Rupees and payable one-time in full via the payment link or bank/UPI details the team shares with you. We never ask for card details in chat.",
+      "Your enrolment is confirmed once payment is received and acknowledged by the team on WhatsApp, and onboarding begins within 24 hours of that.",
     ],
   },
   {
     title: "5. Refunds & cancellations",
     body: [
-      "Refunds and cancellations are governed by our Refund Policy, available on this website. Failed or duplicate transactions are refunded automatically to the source payment method.",
+      "Refunds and cancellations are governed by our Refund Policy, available on this website. Failed or duplicate transactions are refunded to the source payment method.",
     ],
   },
   {

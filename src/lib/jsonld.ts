@@ -1,11 +1,7 @@
 import { FAQS } from "@/lib/faqs";
-import { PLANS } from "@/lib/plans";
 import { IG_URL } from "@/lib/site";
 
 export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://coachridhijain.com";
-
-/** Bump whenever plan prices are revised — feeds every Offer.priceValidUntil. */
-const PRICE_VALID_UNTIL = "2026-12-31";
 
 const organization = {
   "@type": "Organization",
@@ -75,21 +71,15 @@ export const programJsonLd = {
       provider: { "@id": `${siteUrl}/#organization` },
       areaServed: { "@type": "Country", name: "India" },
       url: `${siteUrl}/program#plans`,
-      offers: PLANS.map((plan) => ({
-        "@type": "Offer",
-        "@id": `${siteUrl}/program#offer-${plan.id}`,
-        name: plan.name,
-        description: `${plan.tagline}. ${plan.bestFor}`,
-        price: String(plan.priceInr),
-        priceCurrency: "INR",
-        priceValidUntil: PRICE_VALID_UNTIL,
-        eligibleDuration: { "@type": "QuantitativeValue", value: plan.days, unitCode: "DAY" },
-        availability: "https://schema.org/InStock",
-        url: `${siteUrl}/program?plan=${plan.id}#pay`,
-        category: plan.tier === "elite" ? "Elite coaching (1:1 with Ridhi Jain)" : "Guided coaching (Head Nutritionist, strategy by Ridhi Jain)",
-        eligibleRegion: { "@type": "Country", name: "India" },
-        seller: { "@id": `${siteUrl}/#organization` },
-      })),
+      // Prices are intentionally not published — enquiries go to WhatsApp.
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Coaching plans",
+        itemListElement: [
+          { "@type": "Offer", name: "Guided plans (30 days to 6 months)", url: `${siteUrl}/program#plans-guided` },
+          { "@type": "Offer", name: "Elite plans (3 or 6 months, 1:1 with Ridhi Jain)", url: `${siteUrl}/program#plans-elite` },
+        ],
+      },
     },
     {
       "@type": "FAQPage",

@@ -38,7 +38,12 @@
   --animate-float: float 7s ease-in-out infinite;
   --animate-float-slow: float 9s ease-in-out 1.2s infinite;
   --animate-pulse-dot: pulse-dot 1.8s ease-in-out infinite;
+  --animate-offer-in: offer-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
 
+  @keyframes offer-in {
+    from { transform: translateY(32px) scale(0.98); opacity: 0; }
+    to { transform: translateY(0) scale(1); opacity: 1; }
+  }
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }

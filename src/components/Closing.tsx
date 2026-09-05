@@ -2,7 +2,6 @@ import Image from "next/image";
 import { Check, X, ArrowRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import CornerAccent from "@/components/CornerAccent";
-import LeadForm from "@/components/LeadForm";
 import Faq from "@/components/Faq";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
 import { waLink } from "@/lib/site";
@@ -71,6 +70,7 @@ export function FitCheck() {
 }
 
 export function FinalCta() {
+  const wa = waLink("Hi Ridhi! I want to book my free fat-loss strategy call this week.");
   return (
     <section id="book" className="relative overflow-hidden bg-ink-900 py-20 lg:py-28">
       <div aria-hidden className="pointer-events-none absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-clay-700/25 blur-3xl" />
@@ -106,7 +106,39 @@ export function FinalCta() {
           </Reveal>
         </div>
         <Reveal delay={200}>
-          <LeadForm id="apply-bottom" source="final_cta_form" compactNote="Fill this in — the team will WhatsApp you within 24 hours to lock your slot." />
+          <div className="relative overflow-hidden rounded-3xl border border-cream-100/10 bg-cream-50 p-7 text-ink-900 shadow-[0_32px_64px_-32px_rgba(0,0,0,0.6)] sm:p-9">
+            <span className="relative mb-5 block h-16 w-16 overflow-hidden rounded-full ring-4 ring-clay-500/25">
+              <Image src="/images/ridhi-about.jpg" alt="Coach Ridhi Jain" fill className="object-cover object-[50%_20%]" sizes="64px" />
+            </span>
+            <p className="eyebrow text-clay-600">Two ways to start</p>
+            <h3 className="font-display mt-3 text-[28px] font-semibold leading-tight tracking-tight">
+              Talk to the team <em className="italic text-clay-600">right now.</em>
+            </h3>
+            <p className="mt-3 text-[14.5px] leading-relaxed text-ink-500">
+              Message on WhatsApp and get your call slot in minutes, or fill the short form at the top and we&apos;ll reach out to you.
+            </p>
+            <div className="mt-7 space-y-3">
+              {wa ? (
+                <a
+                  href={wa}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#25D366] px-6 py-4 text-[14px] font-extrabold uppercase tracking-[0.08em] text-white shadow-[0_16px_32px_-12px_rgba(18,140,66,0.55)] transition hover:brightness-95"
+                >
+                  <WhatsAppIcon className="h-5 w-5" /> WhatsApp the team
+                </a>
+              ) : null}
+              <a
+                href="#apply"
+                className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-clay-600 px-6 py-4 text-[14px] font-extrabold uppercase tracking-[0.08em] text-cream-50 shadow-[0_16px_32px_-12px_rgba(180,72,32,0.55)] transition hover:bg-clay-700"
+              >
+                Book my free call <ArrowRight className="h-5 w-5" />
+              </a>
+            </div>
+            <p className="mt-5 text-center text-[11.5px] font-semibold text-ink-400">
+              Replies Mon–Sat, 10 am – 7 pm IST · No spam, no pressure
+            </p>
+          </div>
         </Reveal>
       </div>
     </section>
@@ -146,7 +178,7 @@ export function Footer() {
               <li><a href="#method" className="transition hover:text-clay-400">The Method</a></li>
               <li><a href="#results" className="transition hover:text-clay-400">Results</a></li>
               <li><a href="#about" className="transition hover:text-clay-400">About Ridhi</a></li>
-              <li><a href="#plans" className="transition hover:text-clay-400">Plans &amp; Pricing</a></li>
+              <li><a href="#plans" className="transition hover:text-clay-400">Coaching Plans</a></li>
               <li><a href="#faq" className="transition hover:text-clay-400">FAQ</a></li>
               <li><a href="/coaching-offer.pdf" target="_blank" rel="noopener noreferrer" className="transition hover:text-clay-400">Coaching Offer (PDF)</a></li>
               <li><a href="/privacy" className="transition hover:text-clay-400">Privacy Policy</a></li>

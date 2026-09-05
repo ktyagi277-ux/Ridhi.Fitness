@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CalendarCheck, Dumbbell, FileText, HelpCircle, IndianRupee, Sparkles, Star } from "lucide-react";
+import { ArrowUpRight, CalendarCheck, ClipboardList, Dumbbell, FileText, HelpCircle, Sparkles, Star } from "lucide-react";
 import { InstagramIcon, WhatsAppIcon } from "@/components/icons";
 import ReelCard from "@/components/ReelCard";
 import CornerAccent from "@/components/CornerAccent";
@@ -39,8 +39,8 @@ export default function Home() {
     },
     {
       href: "/program#plans",
-      label: "Coaching plans & pricing",
-      icon: <IndianRupee className="h-5 w-5" strokeWidth={2} />,
+      label: "Coaching plans — Guided & Elite",
+      icon: <ClipboardList className="h-5 w-5" strokeWidth={2} />,
       external: false,
       style: "border-2 border-ink-900/10 bg-white text-ink-800 hover:border-clay-400",
     },

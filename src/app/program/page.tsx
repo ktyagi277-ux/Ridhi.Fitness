@@ -1,31 +1,29 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
-import { Marquee, PainPoints, StatsBand } from "@/components/SocialProof";
-import { Method, Steps } from "@/components/Program";
+import { Marquee, StatsBand } from "@/components/SocialProof";
+import { Method } from "@/components/Program";
 import { Transformations } from "@/components/Results";
 import About from "@/components/About";
-import InstaFeed from "@/components/InstaFeed";
 import { FitCheck, FinalCta, Footer } from "@/components/Closing";
 import Faq from "@/components/Faq";
 import StickyCta from "@/components/StickyCta";
-import PaymentCta from "@/components/PaymentCta";
 import ConditionTabs from "@/components/ConditionTabs";
 import Roadmap from "@/components/Roadmap";
 import Quiz from "@/components/Quiz";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import Pricing from "@/components/Pricing";
+import TimedOffer from "@/components/TimedOffer";
 import { programJsonLd } from "@/lib/jsonld";
-import { isRazorpayConfigured } from "@/lib/razorpay";
 
 export const metadata: Metadata = {
-  title: "Fat Loss Coaching Plans & Pricing | Coach Ridhi Jain",
+  title: "Fat Loss Coaching Plans — Guided & Elite | Coach Ridhi Jain",
   description:
-    "Hormone-friendly fat loss for working women — desi food, 30-min home workouts. Guided plans from ₹5,999, Elite 1:1 coaching with Ridhi from ₹19,999.",
+    "Hormone-friendly fat loss for working women — desi food, 30-min home workouts. Guided plans run by a Head Nutritionist, Elite 1:1 coaching with Ridhi. Free strategy call, chat on WhatsApp.",
   alternates: { canonical: "/program" },
   openGraph: {
     title: "Lose 8–10 kgs in 12 Weeks — Guided & Elite Coaching Plans",
     description:
-      "Hormone-friendly fat loss for working women. Guided plans from ₹5,999, Elite coaching with Ridhi from ₹19,999. Free strategy call.",
+      "Hormone-friendly fat loss for working women. Guided plans with a Head Nutritionist, Elite 1:1 coaching with Ridhi. Free strategy call — chat on WhatsApp.",
     url: "/program",
   },
 };
@@ -37,26 +35,30 @@ export default function ProgramPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(programJsonLd) }}
       />
+      {/* 1. Hook + lead form above the fold */}
       <Hero />
       <Marquee />
-      <PainPoints />
-      <ConditionTabs />
+      {/* 2. The offer — plans come early so ad traffic sees them immediately */}
+      <Pricing />
+      {/* 3. Proof it works */}
       <Transformations />
       <StatsBand />
+      {/* 4. "Which one is you" — PCOS / thyroid / postpartum / busy (replaces the old pain-points grid, which said the same things) */}
+      <ConditionTabs />
+      {/* 5. How the method works */}
       <Method />
-      <Steps />
-      <About />
-      <InstaFeed />
-      <Roadmap />
+      {/* 6. Self-qualify: quiz, what happens after you join, honest fit check */}
       <Quiz />
+      <Roadmap />
       <FitCheck />
-      <Pricing checkoutEnabled={isRazorpayConfigured()} />
+      {/* 7. Objections, then one last CTA (no second form — the hero form is the only form) */}
       <Faq />
-      {/* Payment section only renders once RAZORPAY_KEY_ID / RAZORPAY_KEY_SECRET are set */}
-      {isRazorpayConfigured() && <PaymentCta />}
       <FinalCta />
+      {/* 8. Meet Ridhi — deliberately last, right above the footer */}
+      <About />
       <Footer />
       <StickyCta />
+      <TimedOffer />
       <WhatsAppFloat />
     </main>
   );

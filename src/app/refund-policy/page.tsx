@@ -19,14 +19,14 @@ const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "2. Failed or duplicate transactions",
     body: [
-      "If money was deducted but your enrolment was not confirmed, or you were charged twice for the same order, the amount is refunded automatically to the source payment method by Razorpay — typically within 5–7 business days.",
-      "If a refund hasn't reached you in that window, contact us with your payment ID and we'll chase it with the payment gateway immediately.",
+      "If money was deducted but your enrolment was not confirmed, or you were charged twice for the same order, the amount is refunded to the source payment method — typically within 5–7 business days.",
+      "If a refund hasn't reached you in that window, message us on WhatsApp with your transaction reference and we'll resolve it immediately.",
     ],
   },
   {
     title: "3. Cancelling before onboarding",
     body: [
-      "If you change your mind after paying but before your onboarding call and questionnaire are completed, write to us within 48 hours of payment. We'll cancel your enrolment and process a refund of the program fee, minus any payment-gateway charges.",
+      "If you change your mind after paying but before your onboarding call and questionnaire are completed, write to us within 48 hours of payment. We'll cancel your enrolment and process a refund of the program fee, minus any bank or payment-gateway charges.",
     ],
   },
   {
@@ -45,7 +45,7 @@ const SECTIONS: { title: string; body: string[] }[] = [
   {
     title: "6. How to reach us",
     body: [
-      "For any payment or refund query, message us on Instagram (@coachridhijain) or via the contact details on our Contact page, with your name and Razorpay payment ID. We respond within 24 hours, Mon–Sat.",
+      "For any payment or refund query, message us on Instagram (@coachridhijain) or via the contact details on our Contact page, with your name and transaction reference. We respond within 24 hours, Mon–Sat.",
       "This policy may be updated from time to time — the latest version will always be on this page. Last updated: 2026.",
     ],
   },

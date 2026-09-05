@@ -1,7 +1,7 @@
 /**
- * Single source of truth for every coaching plan Ridhi sells.
- * Prices are read server-side at checkout (never trusted from the client),
- * rendered in the Pricing section, and published as Offers in JSON-LD.
+ * Single source of truth for every coaching plan Ridhi offers.
+ * Prices are deliberately NOT listed on the site — every plan enquiry goes
+ * straight to WhatsApp, where the team shares pricing after the free call.
  */
 
 export type PlanTier = "guided" | "elite";
@@ -12,11 +12,10 @@ export type Plan = {
   name: string;
   /** Short duration label shown on the card, e.g. "30 days" */
   duration: string;
-  /** Duration in days — used for per-day pricing and the success screen */
+  /** Duration in days — used for schema.org eligibleDuration */
   days: number;
   /** ISO 8601 duration for schema.org, e.g. "P30D" */
   isoDuration: string;
-  priceInr: number;
   /** Small badge on the card, e.g. "Best starting point" */
   badge?: string;
   /** One-line positioning under the plan name */
@@ -65,7 +64,6 @@ export const PLANS: Plan[] = [
     duration: "30 days",
     days: 30,
     isoDuration: "P30D",
-    priceInr: 5999,
     tagline: "Just the roadmap",
     features: [
       "Custom nutrition plan",
@@ -87,7 +85,6 @@ export const PLANS: Plan[] = [
     duration: "60 days",
     days: 60,
     isoDuration: "P60D",
-    priceInr: 11999,
     badge: "Best starting point",
     tagline: "More support, more accountability",
     featured: true,
@@ -107,7 +104,6 @@ export const PLANS: Plan[] = [
     duration: "90 days",
     days: 90,
     isoDuration: "P90D",
-    priceInr: 16999,
     badge: "Most economical",
     tagline: "The full 12-week transformation",
     inherits: "Everything in Guided 60 Days",
@@ -119,7 +115,7 @@ export const PLANS: Plan[] = [
       "Unlimited WhatsApp support",
     ],
     bestFor:
-      "The lowest per-day price on the menu — for people who are serious about a complete 12-week transformation.",
+      "The most economical way to do the full 12-week transformation — for people who are serious about a complete change.",
   },
   {
     id: "guided-180",
@@ -128,7 +124,6 @@ export const PLANS: Plan[] = [
     duration: "6 months",
     days: 180,
     isoDuration: "P6M",
-    priceInr: 22999,
     badge: "Most comprehensive",
     tagline: "Where the most permanent results happen",
     inherits: "Everything in Guided 90 Days",
@@ -147,7 +142,6 @@ export const PLANS: Plan[] = [
     duration: "3 months",
     days: 90,
     isoDuration: "P3M",
-    priceInr: 19999,
     badge: "Most intensive",
     tagline: "Our most intensive 3-month transformation program",
     featured: true,
@@ -170,7 +164,6 @@ export const PLANS: Plan[] = [
     duration: "6 months",
     days: 180,
     isoDuration: "P6M",
-    priceInr: 25999,
     badge: "Highest level of coaching",
     tagline: "The highest level of coaching we offer",
     inherits: "Everything in Elite 3 Months",
@@ -184,24 +177,6 @@ export const PLANS: Plan[] = [
   },
 ];
 
-export const PLAN_IDS = PLANS.map((p) => p.id) as [string, ...string[]];
-
-export const DEFAULT_PLAN_ID = "elite-90";
-
-export function getPlan(id: string | null | undefined): Plan | undefined {
-  if (!id) return undefined;
-  return PLANS.find((p) => p.id === id);
-}
-
 export function plansForTier(tier: PlanTier): Plan[] {
   return PLANS.filter((p) => p.tier === tier);
-}
-
-export function formatInr(amount: number): string {
-  return `₹${amount.toLocaleString("en-IN")}`;
-}
-
-/** Whole-rupee price per day, e.g. "₹189/day" */
-export function perDay(plan: Plan): string {
-  return `${formatInr(Math.round(plan.priceInr / plan.days))}/day`;
 }

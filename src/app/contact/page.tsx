@@ -50,7 +50,7 @@ export default function ContactPage() {
               </span>
               <h2 className="font-display mt-5 text-xl font-semibold">WhatsApp</h2>
               <p className="mt-1.5 text-[14px] leading-relaxed text-ink-500">
-                The fastest way to reach the team — program questions, payment queries, anything.
+                The fastest way to reach the team — plan details, pricing, payment queries, anything.
               </p>
             </a>
           )}
@@ -95,7 +95,7 @@ export default function ContactPage() {
         </div>
 
         <p className="mt-10 text-sm leading-relaxed text-ink-400">
-          For payment or refund queries, include your name and Razorpay payment ID so we can resolve it in one go.
+          For payment or refund queries, include your name and the WhatsApp number you enrolled with so we can resolve it in one go.
           See our <Link href="/refund-policy" className="font-bold text-clay-600 hover:underline">Refund Policy</Link> and{" "}
           <Link href="/terms" className="font-bold text-clay-600 hover:underline">Terms</Link>.
         </p>
