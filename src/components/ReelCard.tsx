@@ -28,7 +28,7 @@ export default function ReelCard() {
         className="flex items-center gap-2.5 px-3.5 py-2.5 transition hover:bg-cream-100/60"
       >
         <span className="relative block h-8 w-8 shrink-0 overflow-hidden rounded-full ring-2 ring-clay-500/30">
-          <Image src="/images/ridhi-profile-v3.jpg" alt="Ridhi Jain" fill className="object-cover" sizes="32px" />
+          <Image src="/images/ridhi-profile-v4.jpg" alt="Ridhi Jain" fill className="object-cover" sizes="32px" />
         </span>
         <span className="min-w-0 flex-1 text-left leading-tight">
           <span className="block truncate text-[12.5px] font-extrabold text-ink-900">coachridhijain</span>
