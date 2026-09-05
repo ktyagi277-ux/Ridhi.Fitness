@@ -214,9 +214,28 @@ export function Transformations() {
         </Reveal>
       </div>
 
-      {/* transformation grid — row by row, no slider */}
-      <div className="mx-auto mt-12 max-w-7xl px-5 sm:px-8">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Phone: auto-sliding right-to-left carousel (pauses on touch/hover) */}
+      <div className="marquee-mask mt-10 overflow-hidden lg:hidden">
+        <div className="flex w-max animate-[marquee_48s_linear_infinite] items-stretch gap-4 pr-4 hover:[animation-play-state:paused] active:[animation-play-state:paused]">
+          {SLIDES.map((slide, i) => (
+            <div key={`a-${i}`} className="w-[280px] shrink-0">
+              <PhotoCard t={slide} />
+            </div>
+          ))}
+          {/* duplicate set for the seamless loop */}
+          <div aria-hidden="true" className="contents">
+            {SLIDES.map((slide, i) => (
+              <div key={`b-${i}`} className="w-[280px] shrink-0">
+                <PhotoCard t={slide} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop: row-by-row grid, 4 per row */}
+      <div className="mx-auto mt-12 hidden max-w-7xl px-5 sm:px-8 lg:block">
+        <div className="grid gap-5 lg:grid-cols-4">
           {SLIDES.map((slide, i) => (
             <Reveal key={slide.href ?? i} delay={(i % 4) * 80} className="h-full">
               <PhotoCard t={slide} />
