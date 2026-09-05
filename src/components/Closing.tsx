@@ -108,7 +108,7 @@ export function FinalCta() {
         <Reveal delay={200}>
           <div className="relative overflow-hidden rounded-3xl border border-cream-100/10 bg-cream-50 p-7 text-ink-900 shadow-[0_32px_64px_-32px_rgba(0,0,0,0.6)] sm:p-9">
             <span className="relative mb-5 block h-16 w-16 overflow-hidden rounded-full ring-4 ring-clay-500/25">
-              <Image src="/images/ridhi-about.jpg" alt="Coach Ridhi Jain" fill className="object-cover object-[50%_20%]" sizes="64px" />
+              <Image src="/images/ridhi-about-v2.jpg" alt="Coach Ridhi Jain" fill className="object-cover object-[50%_20%]" sizes="64px" />
             </span>
             <p className="eyebrow text-clay-600">Two ways to start</p>
             <h3 className="font-display mt-3 text-[28px] font-semibold leading-tight tracking-tight">

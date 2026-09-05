@@ -108,7 +108,7 @@ export default function Home() {
         <div className="text-center">
           <div className="relative mx-auto h-24 w-24">
             <span className="relative block h-24 w-24 overflow-hidden rounded-full ring-4 ring-clay-500/25">
-              <Image src="/images/ridhi-profile.jpg" alt="Coach Ridhi Jain" fill className="object-cover" sizes="96px" priority />
+              <Image src="/images/ridhi-profile-v2.jpg" alt="Coach Ridhi Jain" fill className="object-cover" sizes="96px" priority />
             </span>
             <span className="absolute -bottom-1 -right-1 block h-9 w-9 overflow-hidden rounded-full border-2 border-cream-50 shadow-md">
               <Image src="/images/rj-logo.jpg" alt="RJ Fitness logo" fill className="object-cover" sizes="36px" />

@@ -96,7 +96,7 @@ export default function TimedOffer() {
           {/* photo */}
           <div className="relative h-44 sm:h-auto sm:min-h-[340px]">
             <Image
-              src="/images/ridhi-about.jpg"
+              src="/images/ridhi-about-v2.jpg"
               alt="Coach Ridhi Jain"
               fill
               className="object-cover object-[50%_20%]"
