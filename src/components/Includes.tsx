@@ -169,15 +169,15 @@ export default function Includes() {
           </p>
         </Reveal>
 
-        <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 xl:grid-cols-6">
           {ITEMS.map(({ Icon, label, note }, i) => (
             <Reveal key={label} delay={i * 60} className="h-full">
-              <div className="flex h-full flex-col items-center rounded-2xl border border-ink-900/8 bg-white px-4 py-6 text-center transition-all duration-300 hover:-translate-y-1 hover:border-clay-200 hover:shadow-[0_20px_40px_-24px_rgba(29,24,20,0.25)] sm:px-6 sm:py-8">
-                <div className="h-20 w-20 sm:h-24 sm:w-24">
+              <div className="flex h-full flex-col items-center rounded-2xl border border-ink-900/8 bg-white px-3 py-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-clay-200 hover:shadow-[0_20px_40px_-24px_rgba(29,24,20,0.25)] sm:px-4 sm:py-6">
+                <div className="h-16 w-16 sm:h-20 sm:w-20">
                   <Icon />
                 </div>
-                <h3 className="mt-4 text-[13px] font-extrabold leading-snug text-ink-900 sm:text-[15px]">{label}</h3>
-                <p className="mt-1.5 text-[12px] leading-relaxed text-ink-500 sm:text-[13px]">{note}</p>
+                <h3 className="mt-3 text-[12.5px] font-extrabold leading-snug text-ink-900 sm:text-[13.5px]">{label}</h3>
+                <p className="mt-1 text-[11.5px] leading-relaxed text-ink-500 sm:text-[12px]">{note}</p>
               </div>
             </Reveal>
           ))}
