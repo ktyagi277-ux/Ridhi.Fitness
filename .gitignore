@@ -28,3 +28,6 @@ NOTES.local.md
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# ssh public key — not needed in the repo
+k.pub
