@@ -165,10 +165,10 @@ function PhotoCard({ t }: { t: Slide }) {
         {!t.embed && (
           <>
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-950/70 to-transparent" />
-            <span className="pointer-events-none absolute bottom-4 left-4 rounded-full border border-cream-50/25 bg-ink-900/85 px-3.5 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.2em] text-cream-100 backdrop-blur">
+            <span className="pointer-events-none absolute bottom-4 left-4 rounded-full bg-cream-50/95 px-3.5 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.2em] text-ink-700 shadow-[0_8px_20px_-8px_rgba(0,0,0,0.5)] backdrop-blur">
               Before
             </span>
-            <span className="pointer-events-none absolute bottom-4 right-4 rounded-full bg-sage-600 px-3.5 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.2em] text-white shadow-[0_8px_20px_-8px_rgba(0,0,0,0.6)]">
+            <span className="pointer-events-none absolute bottom-4 right-4 rounded-full bg-clay-600 px-3.5 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.2em] text-cream-50 shadow-[0_8px_20px_-8px_rgba(180,72,32,0.7)]">
               After
             </span>
           </>
