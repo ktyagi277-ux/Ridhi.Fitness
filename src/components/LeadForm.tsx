@@ -226,7 +226,7 @@ export default function LeadForm({ id, source, dark = false, compactNote }: Lead
         </div>
 
         {/* 2. Age  3. Height  4. Weight */}
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           <div>
             <label htmlFor={`${id}-age`} className="sr-only">Age</label>
             <input
@@ -254,7 +254,7 @@ export default function LeadForm({ id, source, dark = false, compactNote }: Lead
             />
             {err("height")}
           </div>
-          <div>
+          <div className="col-span-2 sm:col-span-1">
             <label htmlFor={`${id}-weight`} className="sr-only">Weight</label>
             <input
               id={`${id}-weight`}

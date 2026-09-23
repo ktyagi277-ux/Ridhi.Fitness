@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Star, CheckCircle2, Zap, ArrowDown } from "lucide-react";
 import LeadForm from "@/components/LeadForm";
-import Reveal from "@/components/Reveal";
 import { InstagramIcon } from "@/components/icons";
 
 const IG_URL = "https://www.instagram.com/coachridhijain";
@@ -12,8 +11,8 @@ export default function Hero() {
       {/* announcement bar */}
       <div className="flex items-center justify-center gap-2 bg-ink-900 px-4 py-2.5 text-center">
         <Zap className="h-3.5 w-3.5 shrink-0 text-gold-400" fill="currentColor" />
-        <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-cream-100 sm:text-xs">
-          1,000+ women coached · PCOS &amp; thyroid friendly · Free 20-min strategy call
+        <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-cream-100 sm:text-xs sm:tracking-[0.14em]">
+          1,000+ women coached · Free strategy call
         </p>
       </div>
 
@@ -22,7 +21,7 @@ export default function Hero() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3.5 sm:px-8">
           <a href="#top" className="group flex items-center gap-3">
             <span className="relative h-10 w-10 overflow-hidden rounded-full shadow-sm ring-2 ring-gold-500/50">
-              <Image src="/images/rj-logo.jpg" alt="RJ Fitness — Coach Ridhi Jain" fill className="object-cover" sizes="40px" priority />
+              <Image src="/images/rj-logo.jpg" alt="RJ Fitness — Coach Ridhi Jain" fill className="object-cover" sizes="40px" />
             </span>
             <span className="leading-none">
               <span className="font-display block text-lg font-semibold tracking-tight">Ridhi Jain</span>
@@ -65,15 +64,15 @@ export default function Hero() {
         <div className="relative mx-auto grid max-w-7xl gap-12 px-5 pb-16 pt-10 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start lg:gap-14 lg:pb-24 lg:pt-16">
           {/* copy */}
           <div>
-            <Reveal>
+            <div>
               <div className="inline-flex items-center gap-2.5 rounded-full border border-ink-900/10 bg-white/70 px-4 py-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-sage-600" />
                 <span className="eyebrow text-ink-600">Online fat loss coach for working women · India</span>
               </div>
-            </Reveal>
+            </div>
 
-            <Reveal delay={90}>
-              <h1 className="font-display mt-6 text-[42px] font-semibold leading-[1.04] tracking-tight text-ink-900 sm:text-6xl lg:text-[64px]">
+            <div>
+              <h1 className="font-display mt-6 text-[clamp(34px,10.4vw,42px)] font-semibold leading-[1.04] tracking-tight text-ink-900 sm:text-6xl lg:text-[64px]">
                 Lose{" "}
                 <span className="relative inline-block whitespace-nowrap">
                   <em className="italic text-clay-600">8–10 kgs</em>
@@ -84,17 +83,17 @@ export default function Hero() {
                 in 12 weeks — without crash diets or giving up{" "}
                 <em className="italic">dal-roti.</em>
               </h1>
-            </Reveal>
+            </div>
 
-            <Reveal delay={180}>
+            <div>
               <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-ink-500">
                 The <strong className="font-bold text-ink-800">Metabolic Reset Method™</strong> — a hormone-friendly,
                 desi-food-approved system that helps busy professional women get leaner, more energetic and
                 unrecognisably confident. No gym. No starving. No rebound.
               </p>
-            </Reveal>
+            </div>
 
-            <Reveal delay={260}>
+            <div>
               <ul className="mt-7 space-y-3">
                 {[
                   "Eat ghar ka khana — plans built around your meetings & family meals",
@@ -107,9 +106,9 @@ export default function Hero() {
                   </li>
                 ))}
               </ul>
-            </Reveal>
+            </div>
 
-            <Reveal delay={340}>
+            <div>
               <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
                 <div className="flex items-center">
                   {["PJ", "SK", "AM", "NR"].map((initials, i) => (
@@ -142,19 +141,19 @@ export default function Hero() {
                   </span>
                 </a>
               </div>
-            </Reveal>
+            </div>
 
-            <Reveal delay={400}>
+            <div>
               <a href="#method" className="mt-10 inline-flex items-center gap-2 text-[12px] font-extrabold uppercase tracking-[0.2em] text-ink-400 transition hover:text-clay-600">
                 See how the method works <ArrowDown className="h-4 w-4" />
               </a>
-            </Reveal>
+            </div>
           </div>
 
           {/* form */}
-          <Reveal delay={220} className="lg:sticky lg:top-24">
+          <div className="lg:sticky lg:top-24">
             <LeadForm id="apply" source="hero_form" />
-          </Reveal>
+          </div>
         </div>
       </section>
     </>

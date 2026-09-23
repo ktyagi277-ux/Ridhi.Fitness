@@ -21,7 +21,7 @@ import { TIERS, plansForTier, type Plan, type Tier } from "@/lib/plans";
 
 const PREVIEW_COUNT = 3;
 
-function PlanCard({ plan, index }: { plan: Plan; index: number }) {
+function PlanCard({ plan, index, carousel }: { plan: Plan; index: number; carousel: boolean }) {
   const [expanded, setExpanded] = useState(false);
   const elite = plan.tier === "elite";
   const wa = waLink(
@@ -57,7 +57,7 @@ function PlanCard({ plan, index }: { plan: Plan; index: number }) {
   );
 
   return (
-    <Reveal delay={index * 90} className="h-full w-[84vw] max-w-[360px] shrink-0 snap-start md:w-auto md:max-w-none md:shrink">
+    <Reveal delay={index * 90} className={`h-full ${carousel ? "w-[84vw] max-w-[360px] shrink-0 snap-start md:w-auto md:max-w-none md:shrink" : "w-full"}`}>
       <article
         className={`relative flex h-full flex-col rounded-3xl border-2 p-5 pt-6 transition-all duration-500 sm:p-7 ${shell}`}
         aria-labelledby={`plan-${plan.id}`}
@@ -184,6 +184,8 @@ function useActiveSlide(ref: React.RefObject<HTMLDivElement | null>, count: numb
 function TierBlock({ tier, first }: { tier: Tier; first: boolean }) {
   const plans = plansForTier(tier.id);
   const elite = tier.id === "elite";
+  // Phone layout: 3+ plans swipe (Guided), 1–2 plans stack so nothing is missed (Elite).
+  const carousel = plans.length > 2;
   const trackRef = useRef<HTMLDivElement | null>(null);
   const active = useActiveSlide(trackRef, plans.length);
 
@@ -204,35 +206,39 @@ function TierBlock({ tier, first }: { tier: Tier; first: boolean }) {
         </div>
       </Reveal>
 
-      {/* Phone: snap carousel that bleeds to the screen edge. md+: grid. */}
+      {/* Phone: Guided = snap carousel that bleeds to the screen edge; Elite = stacked so both plans are always visible. md+: grid. */}
       <div
         ref={trackRef}
-        className={`-mx-5 mt-8 flex snap-x snap-mandatory items-start gap-4 overflow-x-auto px-5 pb-2 pt-4 md:items-stretch [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:mt-10 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:pt-0 ${
-          plans.length > 2 ? "xl:grid-cols-4" : "md:mx-auto md:max-w-4xl"
-        }`}
-        style={{ scrollPaddingLeft: 20 }}
+        className={
+          carousel
+            ? "-mx-5 mt-8 flex snap-x snap-mandatory items-start gap-4 overflow-x-auto px-5 pb-2 pt-4 md:items-stretch [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:mt-10 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 md:pt-0 xl:grid-cols-4"
+            : "mt-8 grid gap-5 pt-3 md:mx-auto md:mt-10 md:max-w-4xl md:grid-cols-2 md:gap-6 md:pt-0"
+        }
+        style={carousel ? { scrollPaddingLeft: 20 } : undefined}
       >
         {plans.map((plan, i) => (
-          <PlanCard key={plan.id} plan={plan} index={i} />
+          <PlanCard key={plan.id} plan={plan} index={i} carousel={carousel} />
         ))}
       </div>
 
-      {/* Phone-only: dots + swipe hint */}
-      <div className="mt-3 flex items-center justify-center gap-3 md:hidden" aria-hidden="true">
-        <span className="flex items-center gap-1.5">
-          {plans.map((p, i) => (
-            <span
-              key={p.id}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === active ? (elite ? "w-5 bg-ink-900" : "w-5 bg-clay-600") : "w-1.5 bg-ink-900/20"
-              }`}
-            />
-          ))}
-        </span>
-        <span className="text-[10.5px] font-extrabold uppercase tracking-[0.18em] text-ink-400">
-          Swipe · {active + 1}/{plans.length}
-        </span>
-      </div>
+      {/* Phone-only: dots + swipe hint (carousel tiers only) */}
+      {carousel && (
+        <div className="mt-3 flex items-center justify-center gap-3 md:hidden" aria-hidden="true">
+          <span className="flex items-center gap-1.5">
+            {plans.map((p, i) => (
+              <span
+                key={p.id}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === active ? (elite ? "w-5 bg-ink-900" : "w-5 bg-clay-600") : "w-1.5 bg-ink-900/20"
+                }`}
+              />
+            ))}
+          </span>
+          <span className="text-[10.5px] font-extrabold uppercase tracking-[0.18em] text-ink-400">
+            Swipe · {active + 1}/{plans.length}
+          </span>
+        </div>
+      )}
 
       {tier.note && (
         <Reveal delay={200}>
