@@ -26,6 +26,14 @@ export const metadata: Metadata = {
     description:
       "Hormone-friendly fat loss for working women. Guided plans with a Head Nutritionist, Elite 1:1 coaching with Ridhi. Free strategy call — chat on WhatsApp.",
     url: "/program",
+    images: [
+      {
+        url: "/images/og-card.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Ridhi Jain — Lose 8–10 kgs in 12 weeks, no crash diets",
+      },
+    ],
   },
 };
 

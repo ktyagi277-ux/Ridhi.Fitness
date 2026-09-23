@@ -81,7 +81,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${manrope.variable}`}>
+    <html lang="en-IN" className={`${fraunces.variable} ${manrope.variable}`}>
       <body className="bg-cream-50 text-ink-900 antialiased">
         {children}
         <div className="grain-overlay" aria-hidden="true" />

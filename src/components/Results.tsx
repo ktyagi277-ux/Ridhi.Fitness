@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import { InstagramIcon } from "@/components/icons";
+import ReelEmbed from "@/components/ReelEmbed";
 
 type Slide = {
   image: string;
@@ -46,7 +47,7 @@ const SLIDES: Slide[] = [
     href: "https://www.instagram.com/p/DZxS9aKj53k/",
   },
   {
-    image: "",
+    image: "/images/ig-reel-newmom-poster.jpg",
     embed: "https://www.instagram.com/reel/DBBfgSkz5eD/embed/",
     alt: "Client transformation reel from @coachridhijain",
     name: "New mom · 60 days",
@@ -125,17 +126,8 @@ function PhotoCard({ t }: { t: Slide }) {
     <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-ink-900/8 bg-white transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_56px_-24px_rgba(29,24,20,0.28)]">
       <div className="relative aspect-[4/5] overflow-hidden bg-cream-100">
         {t.embed ? (
-          // Instagram's embed = ~54px header + 16:9-tall video. Shift up so the video fills the card.
-          <iframe
-            src={t.embed}
-            title={t.alt}
-            loading="lazy"
-            scrolling="no"
-            allow="encrypted-media"
-            allowFullScreen
-            className="absolute left-0 top-0 w-full border-0"
-            style={{ height: "720px", transform: "translateY(-54px)" }}
-          />
+          // Poster + play button; the heavy Instagram iframe only loads on tap.
+          <ReelEmbed src={t.embed} poster={t.image} alt={t.alt} />
         ) : t.href ? (
           <a href={t.href} target="_blank" rel="noopener noreferrer" aria-label={`See ${t.name}'s transformation post on Instagram`} className="absolute inset-0">
             <Image
@@ -176,7 +168,7 @@ function PhotoCard({ t }: { t: Slide }) {
       </div>
       <div className="flex items-center justify-between gap-3 px-5 py-4">
         <div className="min-w-0">
-          <h3 className="font-display truncate text-lg font-semibold leading-tight text-ink-900">{t.name}</h3>
+          <p className="font-display truncate text-lg font-semibold leading-tight text-ink-900">{t.name}</p>
           <p className="mt-0.5 truncate text-[11px] font-bold uppercase tracking-[0.12em] text-ink-400">{t.role}</p>
         </div>
         {t.href && (
@@ -222,8 +214,8 @@ export function Transformations() {
               <PhotoCard t={slide} />
             </div>
           ))}
-          {/* duplicate set for the seamless loop */}
-          <div aria-hidden="true" className="contents">
+          {/* duplicate set for the seamless loop — inert so its links are not focusable */}
+          <div aria-hidden="true" inert className="contents">
             {SLIDES.map((slide, i) => (
               <div key={`b-${i}`} className="w-[280px] shrink-0">
                 <PhotoCard t={slide} />
