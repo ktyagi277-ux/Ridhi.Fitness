@@ -54,7 +54,7 @@ export default function ReelCard() {
           poster="/videos/reel-poster.jpg"
           className="absolute inset-0 h-full w-full object-cover"
         >
-          <source src="/videos/ridhi-reel-v2.mp4" type="video/mp4" />
+          <source src="/videos/ridhi-reel-v3.mp4" type="video/mp4" />
         </video>
 
         <span className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-ink-950/70 px-3 py-1.5 text-[11px] font-extrabold text-white backdrop-blur-sm">
