@@ -70,7 +70,7 @@ export function FitCheck() {
 }
 
 export function FinalCta() {
-  const wa = waLink("Hi Ridhi! I want to book my free fat-loss strategy call this week.");
+  const wa = waLink("Hi Ridhi! I want to book my free fat-loss strategy call.");
   return (
     <section id="book" className="relative overflow-hidden bg-ink-900 py-20 lg:py-28">
       <div aria-hidden className="pointer-events-none absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-clay-700/25 blur-3xl" />
@@ -93,7 +93,7 @@ export function FinalCta() {
               {[
                 "Free 20-min strategy call — ₹1,999 value",
                 "Custom fat-loss roadmap in 48 hours",
-                "Only 10 free slots this week — batch starts Monday",
+                "Replies on WhatsApp within a few hours, Mon–Sat",
               ].map((line) => (
                 <li key={line} className="flex items-center gap-3 text-[15px] font-bold text-cream-100">
                   <span className="flex h-6 w-6 items-center justify-center rounded-full bg-clay-600">

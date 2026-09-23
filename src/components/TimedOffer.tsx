@@ -36,7 +36,7 @@ function markSeen() {
 
 export default function TimedOffer() {
   const [open, setOpen] = useState(false);
-  const wa = waLink("Hi Ridhi! I saw the free strategy call offer on your website. Can I book a slot this week?");
+  const wa = waLink("Hi Ridhi! I saw the free strategy call on your website. Can I book a slot?");
 
   useEffect(() => {
     if (seenRecently()) return;
@@ -104,7 +104,7 @@ export default function TimedOffer() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ink-900 via-ink-900/20 to-transparent sm:bg-gradient-to-r sm:from-transparent sm:via-transparent sm:to-ink-900" />
             <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-gold-400 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.18em] text-ink-900">
-              <Zap className="h-3 w-3" fill="currentColor" /> This week only
+              <Zap className="h-3 w-3" fill="currentColor" /> Free strategy call
             </span>
           </div>
 
@@ -112,7 +112,7 @@ export default function TimedOffer() {
           <div className="p-6 pt-4 sm:p-7 sm:pt-10">
             <p className="text-[11px] font-extrabold uppercase tracking-[0.24em] text-clay-400">Still thinking?</p>
             <h2 id="offer-title" className="font-display mt-2 text-[28px] font-semibold leading-[1.08] tracking-tight sm:text-[32px]">
-              Only <em className="italic text-gold-400">10 free</em> strategy calls left this week.
+              Your <em className="italic text-gold-400">free</em> fat-loss strategy call is one message away.
             </h2>
             <p className="mt-3 text-[14px] leading-relaxed text-cream-100/70">
               20 minutes with Ridhi&apos;s team. You leave with a clear plan for your first 8–10 kg — whether you join or not.

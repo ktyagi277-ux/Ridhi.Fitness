@@ -13,7 +13,7 @@ export default function Hero() {
       <div className="flex items-center justify-center gap-2 bg-ink-900 px-4 py-2.5 text-center">
         <Zap className="h-3.5 w-3.5 shrink-0 text-gold-400" fill="currentColor" />
         <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-cream-100 sm:text-xs">
-          New batch starts Monday — only 10 free strategy calls this week
+          1,000+ women coached · PCOS &amp; thyroid friendly · Free 20-min strategy call
         </p>
       </div>
 
