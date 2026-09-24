@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Star, CheckCircle2, Zap, ArrowDown } from "lucide-react";
 import LeadForm from "@/components/LeadForm";
 import { InstagramIcon } from "@/components/icons";
+import HeroBadge from "@/components/HeroBadge";
 
 const IG_URL = "https://www.instagram.com/coachridhijain";
 
@@ -148,11 +149,16 @@ export default function Hero() {
                 See how the method works <ArrowDown className="h-4 w-4" />
               </a>
             </div>
+
+            {/* desktop: 3D badge in the empty space under the copy */}
+            <HeroBadge slot="desktop" />
           </div>
 
           {/* form */}
           <div className="lg:sticky lg:top-24">
             <LeadForm id="apply" source="hero_form" />
+            {/* phone: 3D badge after the form (never pushes the form, never covers text) */}
+            <HeroBadge slot="phone" />
           </div>
         </div>
       </section>
