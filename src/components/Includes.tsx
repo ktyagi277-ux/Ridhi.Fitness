@@ -151,7 +151,7 @@ const ITEMS = [
   { Icon: Workout, label: "30-min home workouts", note: "No gym, minimal equipment" },
   { Icon: BloodWork, label: "Blood work analysis", note: "Hormones & markers reviewed" },
   { Icon: CoachCall, label: "Calls with your coach", note: "Strategy, reviews and course-corrections" },
-  { Icon: WhatsAppSupport, label: "Weekly WhatsApp check-ins", note: "Accountability that actually shows up" },
+  { Icon: WhatsAppSupport, label: "Weekly check-ins over call", note: "Accountability that actually shows up" },
   { Icon: RecipeBook, label: "Recipe book", note: "Quick desi recipes for busy days" },
 ];
 

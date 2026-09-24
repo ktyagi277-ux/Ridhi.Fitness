@@ -158,7 +158,7 @@ export default function LeadForm({ id, source, dark = false, compactNote }: Lead
           You&apos;re on the list, {fields.name.split(" ")[0] || "champ"}!
         </h3>
         <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-ink-500">
-          Your free strategy-call request is confirmed. Ridhi&apos;s team will call or WhatsApp you within 24 hours
+          Your discovery-call request is confirmed. Ridhi&apos;s team will call or WhatsApp you within 24 hours
           at your preferred time with the available slots.
         </p>
         <p className="mt-5 text-xs font-semibold uppercase tracking-[0.18em] text-ink-400">
@@ -186,11 +186,11 @@ export default function LeadForm({ id, source, dark = false, compactNote }: Lead
             <span className="relative inline-flex h-2 w-2 rounded-full bg-clay-600" />
           </span>
           <span className="text-[11px] font-extrabold uppercase tracking-[0.16em] text-clay-700">
-            Free strategy call — ₹1,999 value
+            Free discovery call — ₹1,999 value
           </span>
         </div>
         <h2 className="font-display text-[26px] font-semibold leading-tight text-ink-900">
-          Book your <em className="italic text-clay-600">free</em> fat-loss strategy call
+          Book your <em className="italic text-clay-600">free</em> discovery call
         </h2>
         <p className="mt-1.5 text-sm leading-relaxed text-ink-500">
           {compactNote ?? "2 minutes to fill. The more we know, the more useful your call — a clear roadmap for your first 10 kg, whether you join or not."}
@@ -430,7 +430,7 @@ export default function LeadForm({ id, source, dark = false, compactNote }: Lead
             </>
           ) : (
             <>
-              Claim my free call
+              Book my discovery call
               <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </>
           )}

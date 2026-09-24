@@ -70,7 +70,7 @@ export function FitCheck() {
 }
 
 export function FinalCta() {
-  const wa = waLink("Hi Ridhi! I want to book my free fat-loss strategy call.");
+  const wa = waLink("Hi Ridhi! I want to apply to work with RJ Fitness. Can we book a discovery call?");
   return (
     <section id="book" className="relative overflow-hidden bg-ink-900 py-20 lg:py-28">
       <div aria-hidden className="pointer-events-none absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-clay-700/25 blur-3xl" />
@@ -79,20 +79,19 @@ export function FinalCta() {
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <div>
           <Reveal>
-            <p className="eyebrow text-clay-400">Last call</p>
+            <p className="eyebrow text-clay-400">Ready when you are</p>
             <h2 className="font-display mt-4 text-[40px] font-semibold leading-[1.05] tracking-tight text-cream-50 sm:text-6xl">
-              Your future self is <em className="italic text-clay-400">12 weeks</em> away.
+              You don&apos;t need another Monday to start again. <em className="italic text-clay-400">You need a system you can keep coming back to.</em>
             </h2>
             <p className="mt-6 max-w-lg text-[17px] leading-relaxed text-cream-100/70">
-              Every Monday you wait is a Monday your transformation waits. Book the free call —
-              worst case, you leave with a plan. Best case, you never diet again.
+              Not another diet. A way of eating, moving and coming back that survives real life — with a coach who has lived it.
             </p>
           </Reveal>
           <Reveal delay={140}>
             <ul className="mt-8 space-y-3.5">
               {[
-                "Free 20-min strategy call — ₹1,999 value",
-                "Custom fat-loss roadmap in 48 hours",
+                "Free 20-min discovery call — no pitch, a plan either way",
+                "Custom nutrition + habit blueprint in 48 hours",
                 "Replies on WhatsApp within a few hours, Mon–Sat",
               ].map((line) => (
                 <li key={line} className="flex items-center gap-3 text-[15px] font-bold text-cream-100">
@@ -115,7 +114,7 @@ export function FinalCta() {
               Talk to the team <em className="italic text-clay-600">right now.</em>
             </h3>
             <p className="mt-3 text-[14.5px] leading-relaxed text-ink-500">
-              Message on WhatsApp and get your call slot in minutes, or fill the short form at the top and we&apos;ll reach out to you.
+              Message on WhatsApp and get your call slot in minutes, or fill the short form at the bottom of this page and we&apos;ll reach out to you.
             </p>
             <div className="mt-7 space-y-3">
               {wa ? (
@@ -132,7 +131,7 @@ export function FinalCta() {
                 href="#apply"
                 className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-clay-600 px-6 py-4 text-[14px] font-extrabold uppercase tracking-[0.08em] text-cream-50 shadow-[0_16px_32px_-12px_rgba(180,72,32,0.55)] transition hover:bg-clay-700"
               >
-                Book my free call <ArrowRight className="h-5 w-5" />
+                Apply to work with RJ Fitness <ArrowRight className="h-5 w-5" />
               </a>
             </div>
             <p className="mt-5 text-center text-[11.5px] font-semibold text-ink-400">
@@ -163,7 +162,7 @@ export function Footer() {
             <span className="relative mb-4 block h-14 w-14 overflow-hidden rounded-full ring-2 ring-gold-400/40">
               <Image src="/images/rj-logo.jpg" alt="RJ Fitness logo" fill className="object-cover" sizes="56px" />
             </span>
-            <p className="font-display text-2xl font-semibold text-cream-50">Ridhi Jain</p>
+            <p className="wordmark text-2xl text-cream-50">Ridhi Jain</p>
             <p className="mt-1 text-[10px] font-extrabold uppercase tracking-[0.3em] text-clay-400">
               Fat Loss Coach for Women
             </p>
@@ -175,7 +174,7 @@ export function Footer() {
           <div>
             <p className="eyebrow text-cream-100/40">Explore</p>
             <ul className="mt-4 space-y-2.5 text-sm font-semibold text-cream-100/70">
-              <li><a href="#method" className="transition hover:text-clay-400">The Method</a></li>
+              <li><a href="#method" className="transition hover:text-clay-400">How it works</a></li>
               <li><a href="#results" className="transition hover:text-clay-400">Results</a></li>
               <li><a href="#about" className="transition hover:text-clay-400">About Ridhi</a></li>
               <li><a href="#plans" className="transition hover:text-clay-400">Coaching Plans</a></li>
@@ -201,7 +200,7 @@ export function Footer() {
                   </a>
                 </li>
               )}
-              <li><a href="#apply" className="transition hover:text-clay-400">Book a free call</a></li>
+              <li><a href="#apply" className="transition hover:text-clay-400">Book a discovery call</a></li>
               <li><span className="text-cream-100/40">Mon–Sat · 10 am – 7 pm IST</span></li>
             </ul>
           </div>

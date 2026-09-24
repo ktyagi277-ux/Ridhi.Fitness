@@ -22,7 +22,7 @@ export default function ContactPage() {
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
             Back to home
           </Link>
-          <p className="font-display text-lg font-semibold">Ridhi Jain</p>
+          <p className="wordmark text-lg">Ridhi Jain</p>
         </div>
       </header>
 
@@ -77,7 +77,7 @@ export default function ContactPage() {
             <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-sage-100 text-sage-600">
               <CalendarCheck className="h-6 w-6" strokeWidth={1.8} />
             </span>
-            <h2 className="font-display mt-5 text-xl font-semibold">Book a free call</h2>
+            <h2 className="font-display mt-5 text-xl font-semibold">Book a discovery call</h2>
             <p className="mt-1.5 text-[14px] leading-relaxed text-ink-500">
               Serious about starting? Skip the DMs — book the free 20-minute strategy call directly.
             </p>

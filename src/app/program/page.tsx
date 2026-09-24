@@ -1,72 +1,74 @@
 import type { Metadata } from "next";
 import Hero from "@/components/Hero";
-import { Marquee, StatsBand } from "@/components/SocialProof";
-import { Method } from "@/components/Program";
+import Story from "@/components/Story";
+import Transformation from "@/components/Transformation";
+import Coach from "@/components/Coach";
+import Different from "@/components/Different";
 import { Transformations } from "@/components/Results";
-import About from "@/components/About";
-import { FitCheck, FinalCta, Footer } from "@/components/Closing";
-import Faq from "@/components/Faq";
-import StickyCta from "@/components/StickyCta";
-import ConditionTabs from "@/components/ConditionTabs";
-import Roadmap from "@/components/Roadmap";
-import Quiz from "@/components/Quiz";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
+import HowItWorks from "@/components/HowItWorks";
+import WhoFor from "@/components/WhoFor";
 import Pricing from "@/components/Pricing";
 import Includes from "@/components/Includes";
+import Faq from "@/components/Faq";
+import { FinalCta, Footer } from "@/components/Closing";
+import ApplySection from "@/components/ApplySection";
+import StickyCta from "@/components/StickyCta";
 import TimedOffer from "@/components/TimedOffer";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { programJsonLd } from "@/lib/jsonld";
 
 export const metadata: Metadata = {
-  title: "Fat Loss Coaching Plans — Guided & Elite | Coach Ridhi Jain",
+  title: "RJ Fitness — Build a body and lifestyle you love, without living on a diet | Ridhi Jain",
   description:
-    "Hormone-friendly fat loss for working women — desi food, 30-min home workouts. Guided plans run by a Head Nutritionist, Elite 1:1 coaching with Ridhi. Free strategy call, chat on WhatsApp.",
+    "Personalised nutrition, habit coaching and real-life accountability for women who are done starting over. Guided plans with a Head Nutritionist, Elite 1:1 coaching with Ridhi Jain. Book a discovery call.",
   alternates: { canonical: "/program" },
   openGraph: {
-    title: "Lose 8–10 kgs in 12 Weeks — Guided & Elite Coaching Plans",
+    title: "Build a body and lifestyle you love — without living on a diet",
     description:
-      "Hormone-friendly fat loss for working women. Guided plans with a Head Nutritionist, Elite 1:1 coaching with Ridhi. Free strategy call — chat on WhatsApp.",
+      "Personalised nutrition, habit coaching and real-life accountability for women who are done starting over. Book a discovery call with RJ Fitness.",
     url: "/program",
     images: [
       {
         url: "/images/og-card.jpg",
         width: 1200,
         height: 630,
-        alt: "Ridhi Jain — Lose 8–10 kgs in 12 weeks, no crash diets",
+        alt: "Ridhi Jain — RJ Fitness",
       },
     ],
   },
 };
 
+/**
+ * Page flow (agreed with Ridhi, 24 Sep 2026):
+ * belief-building first, selling only at the end.
+ */
 export default function ProgramPage() {
   return (
     <main className="overflow-x-clip">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(programJsonLd) }}
-      />
-      {/* 1. Hook + lead form above the fold */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(programJsonLd) }} />
+      {/* Intro band — Ridhi's name + positioning line (no form here any more) */}
       <Hero />
-      <Marquee />
-      {/* 2. The offer — plans come early so ad traffic sees them immediately */}
-      <Pricing />
-      {/* 2b. What every plan includes — illustrated */}
-      <Includes />
-      {/* 3. Proof it works */}
+      {/* 1. My story — why RJ Fitness exists */}
+      <Story />
+      {/* 2. My own transformation — Before → After → Maintained */}
+      <Transformation />
+      {/* 3. Meet your coach — personal proof into authority */}
+      <Coach />
+      {/* 4. Why RJ Fitness is different */}
+      <Different />
+      {/* 5. Client proof */}
       <Transformations />
-      <StatsBand />
-      {/* 4. "Which one is you" — PCOS / thyroid / postpartum / busy (replaces the old pain-points grid, which said the same things) */}
-      <ConditionTabs />
-      {/* 5. How the method works */}
-      <Method />
-      {/* 6. Self-qualify: quiz, what happens after you join, honest fit check */}
-      <Quiz />
-      <Roadmap />
-      <FitCheck />
-      {/* 7. Objections, then one last CTA (no second form — the hero form is the only form) */}
+      {/* 6. How RJ Fitness works */}
+      <HowItWorks />
+      {/* 7. Who this is for */}
+      <WhoFor />
+      {/* 8. Your program — Guided & Elite, then what every plan includes */}
+      <Pricing />
+      <Includes />
+      {/* 9. FAQ + final CTA, then the only form on the page */}
       <Faq />
       <FinalCta />
-      {/* 8. Meet Ridhi — deliberately last, right above the footer */}
-      <About />
+      <ApplySection />
       <Footer />
       <StickyCta />
       <TimedOffer />

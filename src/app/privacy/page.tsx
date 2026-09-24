@@ -69,7 +69,7 @@ export default function PrivacyPage() {
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
             Back to home
           </Link>
-          <p className="font-display text-lg font-semibold">Ridhi Jain</p>
+          <p className="wordmark text-lg">Ridhi Jain</p>
         </div>
       </header>
 

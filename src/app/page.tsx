@@ -24,15 +24,15 @@ export default function Home() {
       style: "bg-[#25D366] text-white hover:brightness-95",
     },
     {
-      href: "/program#apply",
-      label: "Book your FREE strategy call",
+      href: "/program",
+      label: "Book a discovery call",
       icon: <CalendarCheck className="h-5 w-5" strokeWidth={2} />,
       external: false,
       style: "bg-clay-600 text-cream-50 hover:bg-clay-700",
     },
     {
-      href: "/program",
-      label: "The Metabolic Reset Method™",
+      href: "/program#method",
+      label: "How RJ Fitness works",
       icon: <Dumbbell className="h-5 w-5" strokeWidth={2} />,
       external: false,
       style: "border-2 border-ink-900/10 bg-white text-ink-800 hover:border-clay-400",
@@ -52,8 +52,8 @@ export default function Home() {
       style: "border-2 border-ink-900/10 bg-white text-ink-800 hover:border-clay-400",
     },
     {
-      href: "/program#assessment",
-      label: "60-sec check: how much can you lose?",
+      href: "/program#who",
+      label: "Who this is for",
       icon: <Sparkles className="h-5 w-5" strokeWidth={2} />,
       external: false,
       style: "border-2 border-ink-900/10 bg-white text-ink-800 hover:border-clay-400",
@@ -107,12 +107,12 @@ export default function Home() {
               <Image src="/images/rj-logo.jpg" alt="RJ Fitness logo" fill className="object-cover" sizes="36px" />
             </span>
           </div>
-          <h1 className="font-display mt-5 text-3xl font-semibold tracking-tight text-ink-900">Ridhi Jain</h1>
+          <h1 className="wordmark mt-5 text-3xl tracking-tight text-ink-900">Ridhi Jain</h1>
           <p className="mt-1 text-[10px] font-extrabold uppercase tracking-[0.3em] text-clay-600">
-            Fat Loss Coach for Working Women
+            Nutritionist &amp; Fat Loss Coach · RJ Fitness
           </p>
           <p className="mx-auto mt-4 max-w-xs text-[14.5px] leading-relaxed text-ink-500">
-            Lose 8–10 kgs in 12 weeks — desi food, 30-min home workouts, no crash diets. 1,000+ women transformed.
+            Build a body and lifestyle you love — without living on a diet. Personalised nutrition, habit coaching and real-life accountability.
           </p>
         </div>
 

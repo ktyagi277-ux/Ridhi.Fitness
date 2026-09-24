@@ -194,7 +194,7 @@ export function Transformations() {
         <Reveal>
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <p className="eyebrow text-clay-600">Proof over promises</p>
+              <p className="eyebrow text-clay-600">Client proof · Other women have done it with her too</p>
               <h2 className="font-display mt-4 max-w-2xl text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
                 Real people. Real deadlines. <em className="italic text-clay-600">Real results.</em>
               </h2>
@@ -240,45 +240,6 @@ export function Transformations() {
         Real client results, as shared on @coachridhijain · Individual outcomes vary with consistency
       </p>
 
-      {/* Ridhi's own journey — dedicated highlight */}
-      <div className="mx-auto mt-14 max-w-7xl px-5 sm:px-8">
-        <Reveal>
-          <a
-            href="https://www.instagram.com/p/DbV6s6gj-7c/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group grid overflow-hidden rounded-[32px] bg-ink-900 text-cream-100 shadow-[0_32px_64px_-28px_rgba(29,24,20,0.5)] transition-transform duration-500 hover:-translate-y-1 md:grid-cols-[0.85fr_1.15fr]"
-          >
-            <div className="relative min-h-[340px] overflow-hidden md:min-h-[420px]">
-              <Image
-                src="/images/ig-ridhi-13kg-crop.jpg"
-                alt="Coach Ridhi's own before and after — 13 kgs down"
-                fill
-                className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
-                sizes="(max-width: 768px) 100vw, 40vw"
-              />
-              <span className="absolute left-4 top-4 rounded-full bg-gold-500 px-4 py-2 text-[12px] font-extrabold uppercase tracking-[0.08em] text-ink-900">
-                13 kg down · kept off
-              </span>
-            </div>
-            <div className="flex flex-col justify-center p-8 sm:p-12">
-              <p className="eyebrow text-gold-400">Coach&apos;s own journey</p>
-              <h3 className="font-display mt-4 text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl">
-                Before she coached 1,000+ women, Ridhi transformed{" "}
-                <em className="italic text-clay-400">herself first.</em>
-              </h3>
-              <p className="mt-5 max-w-lg text-[15.5px] leading-relaxed text-cream-100/70">
-                Down 13 kgs with the exact system she now teaches — desi food, home workouts, no crash
-                diets. The method she coaches is the method she lived. That&apos;s why it works in real life,
-                not just on paper.
-              </p>
-              <span className="mt-7 inline-flex items-center gap-2 text-[12px] font-extrabold uppercase tracking-[0.16em] text-gold-400 transition group-hover:text-gold-500">
-                See her journey on Instagram →
-              </span>
-            </div>
-          </a>
-        </Reveal>
-      </div>
     </section>
   );
 }

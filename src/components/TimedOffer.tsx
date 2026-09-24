@@ -115,7 +115,7 @@ export default function TimedOffer() {
               Your <em className="italic text-gold-400">free</em> fat-loss strategy call is one message away.
             </h2>
             <p className="mt-3 text-[14px] leading-relaxed text-cream-100/70">
-              20 minutes with Ridhi&apos;s team. You leave with a clear plan for your first 8–10 kg — whether you join or not.
+              20 minutes with Ridhi&apos;s team. You leave with a clear plan for your body and your routine — whether you join or not.
             </p>
 
             <div className="mt-6 space-y-2.5">
@@ -141,7 +141,7 @@ export default function TimedOffer() {
                 }}
                 className="flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-cream-100/15 px-5 py-3 text-[12px] font-extrabold uppercase tracking-[0.1em] text-cream-100/85 transition hover:border-cream-100/40"
               >
-                Book the free call <ArrowRight className="h-4 w-4" />
+                Book a discovery call <ArrowRight className="h-4 w-4" />
               </a>
             </div>
 

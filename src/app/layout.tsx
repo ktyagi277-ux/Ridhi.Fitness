@@ -23,9 +23,9 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://coachridhijain.com"
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Ridhi Jain | Nutritionist | Fat Loss Coach for Working Women",
+  title: "Ridhi Jain | Nutritionist & Fat Loss Coach | RJ Fitness",
   description:
-    "Online fat loss coach for working women in India. Hormone-friendly plans, desi food, 30-min home workouts, 1:1 coaching by Ridhi Jain. Free strategy call.",
+    "Nutritionist and fat loss coach Ridhi Jain. Build a body and lifestyle you love — without living on a diet. Personalised nutrition, habit coaching and real-life accountability. Book a discovery call.",
   keywords: [
     "fat loss coach for women",
     "weight loss program india",
@@ -45,19 +45,19 @@ export const metadata: Metadata = {
   category: "Health & Fitness",
   formatDetection: { telephone: false },
   openGraph: {
-    title: "Lose 8–10 kgs in 12 Weeks — No Crash Diets",
+    title: "Build a body and lifestyle you love — without living on a diet",
     description:
-      "Hormone-friendly fat loss for working women. Desi food, 30-min home workouts, 1:1 coaching. Book your free strategy call.",
+      "Personalised nutrition, habit coaching and real-life accountability for women who are done starting over. Book a discovery call.",
     url: siteUrl,
     siteName: "Coach Ridhi Jain — Metabolic Reset Method",
     locale: "en_IN",
-    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Ridhi Jain — Lose 8–10 kgs in 12 weeks, no crash diets" }],
+    images: [{ url: "/images/og-card.jpg", width: 1200, height: 630, alt: "Ridhi Jain — RJ Fitness" }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lose 8–10 kgs in 12 Weeks — Coach Ridhi Jain",
-    description: "Hormone-friendly fat loss for working women. Book your free strategy call.",
+    title: "Build a body and lifestyle you love — Ridhi Jain, RJ Fitness",
+    description: "Personalised nutrition, habit coaching and real-life accountability. Book a discovery call.",
     images: ["/images/og-card.jpg"],
   },
   robots: {

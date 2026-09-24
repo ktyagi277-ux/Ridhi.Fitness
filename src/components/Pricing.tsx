@@ -149,7 +149,7 @@ function PlanCard({ plan, index, carousel }: { plan: Plan; index: number; carous
                 elite ? "bg-gold-400 text-ink-900 hover:bg-gold-500" : "bg-clay-600 text-cream-50 hover:bg-clay-700"
               }`}
             >
-              Start with a free call <ArrowRight className="h-4 w-4" />
+              Start with a discovery call <ArrowRight className="h-4 w-4" />
             </a>
           )}
           <a
@@ -157,7 +157,7 @@ function PlanCard({ plan, index, carousel }: { plan: Plan; index: number; carous
             onClick={() => trackMetaEvent("Lead", { placement: "plans_free_call", content_name: plan.name })}
             className={`flex w-full items-center justify-center gap-2 rounded-2xl border-2 px-5 py-3 text-[12px] font-extrabold uppercase tracking-[0.1em] transition-colors ${secondary}`}
           >
-            Free call first <ArrowRight className="h-4 w-4" />
+            Discovery call first <ArrowRight className="h-4 w-4" />
           </a>
         </div>
       </article>
@@ -284,7 +284,7 @@ export default function Pricing() {
                   Message the team on WhatsApp
                 </a>
               ) : (
-                <a href="#apply" className="font-extrabold text-clay-600 hover:underline">Book the free strategy call</a>
+                <a href="#apply" className="font-extrabold text-clay-600 hover:underline">Book the discovery call</a>
               )}{" "}
               and they&apos;ll recommend the right plan for your goal and budget.
             </p>

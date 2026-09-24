@@ -25,7 +25,7 @@ const person = {
   image: `${siteUrl}/images/coach-hero.png`,
   jobTitle: "Fat Loss Coach & Nutritionist",
   description:
-    "Fat loss coach for working women. The Metabolic Reset Method™ helps women lose 8–10 kgs in 12 weeks with hormone-friendly, desi-food-approved plans.",
+    "Nutritionist and fat loss coach. RJ Fitness helps women build a body and lifestyle they love — without living on a diet — through personalised nutrition, habit coaching and real-life accountability.",
   sameAs: [IG_URL],
   knowsAbout: ["Weight loss", "Nutrition", "PCOS", "Thyroid", "Women's hormonal health", "Metabolic health"],
   worksFor: { "@id": `${siteUrl}/#organization` },

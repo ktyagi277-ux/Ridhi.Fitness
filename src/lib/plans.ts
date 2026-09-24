@@ -76,7 +76,7 @@ export const PLANS: Plan[] = [
       "Recipe book included",
     ],
     bestFor:
-      "Best suited for people who are already disciplined and consistent, and simply want an expert to tell them exactly what to do. Expect early wins in 30 days — the full 8–10 kg transformation is a 12-week journey.",
+      "Best suited for people who are already disciplined and consistent, and simply want an expert to tell them exactly what to do. Expect early wins in 30 days — the full transformation is a 12-week journey.",
   },
   {
     id: "guided-60",
@@ -95,7 +95,7 @@ export const PLANS: Plan[] = [
       "More time to create permanent results",
     ],
     bestFor:
-      "The ideal first plan if you want enough runway to build habits that actually stick. Enough time for a clear, visible change — continue into the 90-day plan for the full 8–10 kg result.",
+      "The ideal first plan if you want enough runway to build habits that actually stick. Enough time for a clear, visible change — continue into the 90-day plan for the full result.",
   },
   {
     id: "guided-90",

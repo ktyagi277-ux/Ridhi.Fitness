@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { Star, CheckCircle2, Zap, ArrowDown } from "lucide-react";
-import LeadForm from "@/components/LeadForm";
+import { Zap, ArrowDown, ArrowRight } from "lucide-react";
 import { InstagramIcon } from "@/components/icons";
 import HeroBadge from "@/components/HeroBadge";
 
@@ -13,7 +12,7 @@ export default function Hero() {
       <div className="flex items-center justify-center gap-2 bg-ink-900 px-4 py-2.5 text-center">
         <Zap className="h-3.5 w-3.5 shrink-0 text-gold-400" fill="currentColor" />
         <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-cream-100 sm:text-xs sm:tracking-[0.14em]">
-          1,000+ women coached · Free strategy call
+          1,000+ women coached · Book a discovery call
         </p>
       </div>
 
@@ -25,7 +24,7 @@ export default function Hero() {
               <Image src="/images/rj-logo.jpg" alt="RJ Fitness — Coach Ridhi Jain" fill className="object-cover" sizes="40px" />
             </span>
             <span className="leading-none">
-              <span className="font-display block text-lg font-semibold tracking-tight">Ridhi Jain</span>
+              <span className="wordmark block text-lg tracking-tight">Ridhi Jain</span>
               <span className="block text-[9.5px] font-extrabold uppercase tracking-[0.3em] text-clay-600">Fat Loss Coach</span>
             </span>
           </a>
@@ -50,115 +49,44 @@ export default function Hero() {
               href="#apply"
               className="rounded-full bg-ink-900 px-5 py-2.5 text-[12px] font-extrabold uppercase tracking-[0.12em] text-cream-50 transition hover:bg-clay-600"
             >
-              Book Free Call
+              Discovery call
             </a>
           </div>
         </div>
       </header>
 
-      {/* hero */}
+      {/* Intro band — Ridhi's name + positioning line. Section 1 (My Story) follows right after. */}
       <section id="top" className="relative overflow-hidden">
-        {/* ambient blobs */}
         <div aria-hidden className="pointer-events-none absolute -left-40 -top-40 h-[480px] w-[480px] rounded-full bg-clay-100/70 blur-3xl" />
-        <div aria-hidden className="pointer-events-none absolute -right-48 top-40 h-[520px] w-[520px] rounded-full bg-sage-100/80 blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute -right-48 top-10 h-[520px] w-[520px] rounded-full bg-sage-100/80 blur-3xl" />
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 pb-16 pt-10 sm:px-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-start lg:gap-14 lg:pb-24 lg:pt-16">
-          {/* copy */}
+        <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pb-10 pt-10 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12 lg:pb-14 lg:pt-14">
           <div>
-            <div>
-              <div className="inline-flex items-center gap-2.5 rounded-full border border-ink-900/10 bg-white/70 px-4 py-2">
-                <span className="h-1.5 w-1.5 rounded-full bg-sage-600" />
-                <span className="eyebrow text-ink-600">Online fat loss coach for working women · India</span>
-              </div>
-            </div>
-
-            <div>
-              <h1 className="font-display mt-6 text-[clamp(34px,10.4vw,42px)] font-semibold leading-[1.04] tracking-tight text-ink-900 sm:text-6xl lg:text-[64px]">
-                Lose{" "}
-                <span className="relative inline-block whitespace-nowrap">
-                  <em className="italic text-clay-600">8–10 kgs</em>
-                  <svg className="absolute -bottom-1.5 left-0 w-full" viewBox="0 0 220 12" fill="none" aria-hidden>
-                    <path d="M3 9C55 3 120 2 217 7" stroke="var(--color-clay-400)" strokeWidth="4" strokeLinecap="round" />
-                  </svg>
-                </span>{" "}
-                in 12 weeks — without crash diets or giving up{" "}
-                <em className="italic">dal-roti.</em>
-              </h1>
-            </div>
-
-            <div>
-              <p className="mt-6 max-w-xl text-[17px] leading-relaxed text-ink-500">
-                The <strong className="font-bold text-ink-800">Metabolic Reset Method™</strong> — a hormone-friendly,
-                desi-food-approved system that helps busy professional women get leaner, more energetic and
-                unrecognisably confident. No gym. No starving. No rebound.
-              </p>
-            </div>
-
-            <div>
-              <ul className="mt-7 space-y-3">
-                {[
-                  "Eat ghar ka khana — plans built around your meetings & family meals",
-                  "30-min home workouts, zero equipment needed",
-                  "Weekly 1:1 check-ins + WhatsApp support when motivation dips",
-                ].map((point) => (
-                  <li key={point} className="flex items-start gap-3 text-[15px] font-semibold text-ink-700">
-                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-sage-600" strokeWidth={2} />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-4">
-                <div className="flex items-center">
-                  {["PJ", "SK", "AM", "NR"].map((initials, i) => (
-                    <span
-                      key={initials}
-                      className={`flex h-10 w-10 items-center justify-center rounded-full border-2 border-cream-50 text-[11px] font-extrabold text-cream-50 ${
-                        ["bg-clay-500", "bg-sage-600", "bg-ink-700", "bg-gold-500"][i]
-                      } ${i > 0 ? "-ml-3" : ""}`}
-                    >
-                      {initials}
-                    </span>
-                  ))}
-                  <span className="-ml-3 flex h-10 w-10 items-center justify-center rounded-full border-2 border-cream-50 bg-cream-200 text-[10px] font-extrabold text-ink-700">
-                    1k+
-                  </span>
-                </div>
-                <div>
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 text-gold-400" fill="currentColor" strokeWidth={0} />
-                    ))}
-                    <span className="ml-1.5 text-sm font-extrabold text-ink-900">4.9/5</span>
-                  </div>
-                  <p className="text-xs font-semibold text-ink-500">from 1,000+ coached women</p>
-                </div>
-                <a href={IG_URL} target="_blank" rel="noopener noreferrer" className="group flex items-center gap-2 rounded-full border border-ink-900/10 bg-white/70 px-4 py-2 transition hover:border-clay-400">
-                  <InstagramIcon className="h-4 w-4 text-clay-600" />
-                  <span className="text-xs font-bold text-ink-700">
-                    113K community · <span className="text-ink-500 group-hover:text-clay-600">@coachridhijain</span>
-                  </span>
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <a href="#method" className="mt-10 inline-flex items-center gap-2 text-[12px] font-extrabold uppercase tracking-[0.2em] text-ink-400 transition hover:text-clay-600">
-                See how the method works <ArrowDown className="h-4 w-4" />
+            <p className="wordmark text-2xl tracking-tight text-ink-900 sm:text-3xl">Ridhi Jain</p>
+            <p className="mt-1 text-[11px] font-extrabold uppercase tracking-[0.3em] text-clay-600">Nutritionist &amp; fat loss coach · RJ Fitness</p>
+            <h1 className="font-display mt-6 text-[clamp(32px,9.5vw,40px)] font-semibold leading-[1.04] tracking-tight text-ink-900 sm:text-5xl lg:text-[54px]">
+              Build a body and lifestyle you love — <em className="italic text-clay-600">without living on a diet.</em>
+            </h1>
+            <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-ink-500">
+              Personalised nutrition, habit coaching and real-life accountability for women who are done starting over.
+            </p>
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <a
+                href="#apply"
+                className="group inline-flex items-center gap-2.5 rounded-full bg-clay-600 px-7 py-4 text-[13px] font-extrabold uppercase tracking-[0.1em] text-cream-50 shadow-[0_18px_36px_-14px_rgba(180,72,32,0.55)] transition hover:bg-clay-700"
+              >
+                Book a discovery call
+                <ArrowRight className="h-4.5 w-4.5 transition-transform duration-300 group-hover:translate-x-1" />
+              </a>
+              <a href="#story" className="inline-flex items-center gap-2 text-[12px] font-extrabold uppercase tracking-[0.2em] text-ink-400 transition hover:text-clay-600">
+                Read my story <ArrowDown className="h-4 w-4" />
               </a>
             </div>
-
-            {/* desktop: 3D badge in the empty space under the copy */}
-            <HeroBadge slot="desktop" />
           </div>
 
-          {/* form */}
-          <div className="lg:sticky lg:top-24">
-            <LeadForm id="apply" source="hero_form" />
-            {/* phone: 3D badge after the form (never pushes the form, never covers text) */}
-            <HeroBadge slot="phone" />
+          {/* right: 3D RJ badge */}
+          <div className="lg:self-center">
+            <HeroBadge />
           </div>
         </div>
       </section>

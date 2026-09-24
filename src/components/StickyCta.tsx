@@ -16,7 +16,7 @@ export default function StickyCta() {
             <span className="absolute inline-flex h-full w-full animate-pulse-dot rounded-full bg-cream-50" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-cream-50" />
           </span>
-          Book my free strategy call
+          Book a discovery call
           <ArrowRight className="h-4.5 w-4.5" />
         </a>
       </div>

@@ -35,4 +35,8 @@ export const FAQS = [
     q: "How much does it cost, and how do I pay?",
     a: "Pricing isn't listed on the website because the right plan depends on your goal, timeline and the support level you need. Book the free strategy call or message the team on WhatsApp — they'll recommend a plan and share the exact fee. Payment is a simple one-time transfer (UPI or bank) via the secure link the team shares on WhatsApp. There is no payment on this website, and we never ask for card details in chat.",
   },
+  {
+    q: "Can I join if I am outside India?",
+    a: "Yes. RJ Fitness coaching is fully online — your plan, weekly check-ins and calls all happen over WhatsApp and video call, and call timings are set around your time zone. Women in the UAE, UK, US, Canada, Singapore and Australia already train with us. Payment works internationally too; the team shares the details after your discovery call.",
+  },
 ];

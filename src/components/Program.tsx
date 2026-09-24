@@ -52,12 +52,6 @@ export function Method() {
               Four pillars that work with your body and your calendar — not against them.
               This is why our women don&apos;t just lose weight. They keep it off.
             </p>
-            <a
-              href="#apply"
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3.5 text-[13px] font-extrabold uppercase tracking-[0.1em] text-cream-50 transition hover:bg-clay-600"
-            >
-              Start with a free call
-            </a>
           </Reveal>
         </div>
 

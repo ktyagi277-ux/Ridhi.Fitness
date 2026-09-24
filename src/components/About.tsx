@@ -13,7 +13,7 @@ const CREDENTIALS = [
 
 export default function About() {
   return (
-    <section id="about" className="scroll-mt-24 border-y border-ink-900/8 bg-cream-100 py-20 lg:py-28">
+    <section id="about-full" className="scroll-mt-24 border-y border-ink-900/8 bg-cream-100 py-20 lg:py-28">
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
         {/* portrait */}
         <Reveal className="relative mx-auto w-full max-w-md lg:max-w-none">
@@ -30,7 +30,7 @@ export default function About() {
           {/* floating badges */}
           {/* On phones the photo is narrow, so keep this badge low (near the waist) — at the top it covers the face. */}
           <div className="absolute -left-2 bottom-32 top-auto animate-float rounded-2xl border border-ink-900/8 bg-white/95 px-5 py-3.5 shadow-[0_16px_40px_-16px_rgba(29,24,20,0.3)] backdrop-blur sm:bottom-auto sm:left-2 sm:top-10">
-            <p className="font-display text-2xl font-semibold text-clay-600">12 wks</p>
+            <p className="font-display text-2xl font-semibold text-clay-600">12 Weeks</p>
             <p className="text-[11px] font-extrabold uppercase tracking-[0.12em] text-ink-500">Average program</p>
           </div>
           <div className="absolute -right-2 bottom-12 animate-float-slow rounded-2xl border border-ink-900/8 bg-white/95 px-5 py-3.5 shadow-[0_16px_40px_-16px_rgba(29,24,20,0.3)] backdrop-blur sm:right-2">
@@ -92,7 +92,7 @@ export default function About() {
                 href="#apply"
                 className="rounded-full bg-clay-600 px-7 py-3.5 text-[13px] font-extrabold uppercase tracking-[0.1em] text-cream-50 shadow-[0_14px_28px_-12px_rgba(180,72,32,0.55)] transition hover:bg-clay-700"
               >
-                Book my free call
+                Book a discovery call
               </a>
               <a
                 href={IG_URL}
