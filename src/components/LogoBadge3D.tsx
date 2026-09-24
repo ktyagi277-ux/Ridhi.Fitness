@@ -5,7 +5,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 import { Float } from "@react-three/drei";
 import { MathUtils, type Group } from "three";
-import { LogoMedallion, Pill } from "@/components/three/Objects";
+import { LogoMedallion, MiniDumbbell } from "@/components/three/Objects";
 import { ParallaxRig, PopIn } from "@/components/three/rigs";
 import { PALETTE } from "@/components/three/materials";
 
@@ -21,9 +21,9 @@ function CoinTurn({ progress, enabled }: { progress: ProgressRef; enabled: boole
     if (!g) return;
     const t = state.clock.elapsedTime;
     const p = enabled ? progress.current : 0;
-    const idle = enabled ? Math.sin(t * 0.45) * 0.35 : 0;
+    const idle = enabled ? Math.sin(t * 0.45) * 0.18 : 0;
     g.rotation.y = MathUtils.damp(g.rotation.y, idle + p * Math.PI * 2, 3, dt);
-    g.rotation.x = MathUtils.damp(g.rotation.x, 0.1 + p * 0.4, 3, dt);
+    g.rotation.x = MathUtils.damp(g.rotation.x, 0.02 + p * 0.2, 3, dt);
   });
   return (
     <group ref={ref}>
@@ -34,23 +34,28 @@ function CoinTurn({ progress, enabled }: { progress: ProgressRef; enabled: boole
   );
 }
 
-const PILL_COLORS = [PALETTE.clay, PALETTE.gold, PALETTE.sageLight, PALETTE.clayLight, PALETTE.goldDeep];
+/** Six mini dumbbells in different brand colours orbit the coin — nothing else. */
+const GEAR = [
+  { plate: PALETTE.clay, bar: PALETTE.gold },
+  { plate: PALETTE.gold, bar: "#ece8e1" },
+  { plate: PALETTE.sage, bar: PALETTE.gold },
+  { plate: PALETTE.ink, bar: PALETTE.gold },
+  { plate: PALETTE.clayLight, bar: "#ece8e1" },
+  { plate: PALETTE.sageDeep, bar: PALETTE.gold },
+] as const;
 
-/** Small pills orbiting the coin on a tilted ring; scrolling spins the ring, each pill tumbles. */
-function PillOrbit({ progress, enabled, radius }: { progress: ProgressRef; enabled: boolean; radius: number }) {
+function GearOrbit({ progress, enabled, radius }: { progress: ProgressRef; enabled: boolean; radius: number }) {
   const ring = useRef<Group>(null);
-  const pills = useRef<(Group | null)[]>([]);
-  const items = useMemo(
+  const items = useRef<(Group | null)[]>([]);
+  const layout = useMemo(
     () =>
-      PILL_COLORS.map((color, i) => {
-        const a = (i / PILL_COLORS.length) * Math.PI * 2;
+      GEAR.map((g, i) => {
+        const a = (i / GEAR.length) * Math.PI * 2;
         return {
+          ...g,
           pos: [Math.cos(a) * radius, Math.sin(a * 2) * 0.22, Math.sin(a) * radius] as [number, number, number],
-          rot: [a * 0.7, a, a * 0.3] as [number, number, number],
-          color,
-          len: 0.26 + (i % 3) * 0.06,
-          r: 0.08 + (i % 2) * 0.02,
-          spin: 0.6 + (i % 4) * 0.25,
+          rot: [a * 0.5, a, a * 0.25] as [number, number, number],
+          spin: 0.45 + (i % 3) * 0.2,
         };
       }),
     [radius],
@@ -63,26 +68,26 @@ function PillOrbit({ progress, enabled, radius }: { progress: ProgressRef; enabl
       ring.current.rotation.y = MathUtils.damp(ring.current.rotation.y, target, 4, dt);
     }
     if (!enabled) return;
-    pills.current.forEach((p, i) => {
-      if (!p) return;
-      p.rotation.x += items[i].spin * dt;
-      p.rotation.z += items[i].spin * 0.6 * dt;
+    items.current.forEach((g, i) => {
+      if (!g) return;
+      g.rotation.y += layout[i].spin * dt;
+      g.rotation.z += layout[i].spin * 0.4 * dt;
     });
   });
 
   return (
-    <group rotation={[0.55, 0, -0.2]}>
+    <group rotation={[0.4, 0, -0.08]}>
       <group ref={ring}>
-        {items.map((it, i) => (
+        {layout.map((it, i) => (
           <group
             key={i}
             position={it.pos}
             rotation={it.rot}
             ref={(el) => {
-              pills.current[i] = el;
+              items.current[i] = el;
             }}
           >
-            <Pill color={it.color} length={it.len} radius={it.r} />
+            <MiniDumbbell plateColor={it.plate} barColor={it.bar} />
           </group>
         ))}
       </group>
@@ -99,7 +104,7 @@ type Props = {
 };
 
 /**
- * Compact 3D RJ badge with small pills orbiting it, for the existing site.
+ * Compact 3D RJ badge with six small dumbbells (different colours) orbiting it.
  * Give it a fixed-size box via className — it lives in normal flow and never
  * overlaps text.
  */
@@ -132,7 +137,7 @@ export default function LogoBadge3D({ className = "", range = 700, scale = 0.78 
               <Suspense fallback={null}>
                 <CoinTurn progress={progress} enabled={animate} />
               </Suspense>
-              <PillOrbit progress={progress} enabled={animate} radius={2.35} />
+              <GearOrbit progress={progress} enabled={animate} radius={2.35} />
             </group>
           </PopIn>
         </ParallaxRig>

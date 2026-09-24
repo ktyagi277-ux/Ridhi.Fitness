@@ -88,3 +88,48 @@ export function Pill({ color = PALETTE.clayLight, length = 0.5, radius = 0.13, .
     </mesh>
   );
 }
+
+/* Mini gear that orbits the medallion ------------------------------- */
+
+export function MiniDumbbell({ plateColor = PALETTE.clay, barColor = PALETTE.gold, ...props }: { plateColor?: string; barColor?: string } & GroupProps) {
+  const side: [number, number, number] = [0, 0, Math.PI / 2];
+  return (
+    <group {...props}>
+      <mesh rotation={side}>
+        <cylinderGeometry args={[0.035, 0.035, 0.62, 20]} />
+        <meshStandardMaterial {...brass} color={barColor} />
+      </mesh>
+      {[-0.23, 0.23].map((x) => (
+        <mesh key={x} position={[x, 0, 0]} rotation={side} castShadow>
+          <cylinderGeometry args={[0.13, 0.13, 0.1, 28]} />
+          <meshPhysicalMaterial {...enamel(plateColor)} />
+        </mesh>
+      ))}
+      {[-0.32, 0.32].map((x) => (
+        <mesh key={x} position={[x, 0, 0]} rotation={side}>
+          <cylinderGeometry args={[0.1, 0.1, 0.07, 28]} />
+          <meshPhysicalMaterial {...enamel(plateColor)} />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+export function MiniKettlebell({ color = PALETTE.sage, ...props }: { color?: string } & GroupProps) {
+  return (
+    <group {...props}>
+      <mesh castShadow>
+        <sphereGeometry args={[0.16, 32, 32]} />
+        <meshPhysicalMaterial {...enamel(color)} />
+      </mesh>
+      <mesh position={[0, 0.15, 0]}>
+        <torusGeometry args={[0.11, 0.028, 12, 32, Math.PI]} />
+        <meshStandardMaterial {...brass} />
+      </mesh>
+      <mesh position={[0, -0.155, 0]}>
+        <cylinderGeometry args={[0.09, 0.1, 0.02, 24]} />
+        <meshPhysicalMaterial {...enamel("#2b3a42")} />
+      </mesh>
+    </group>
+  );
+}
