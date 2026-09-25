@@ -193,7 +193,7 @@ export default function LeadForm({ id, source, dark = false, compactNote }: Lead
           Book your <em className="italic text-clay-600">free</em> discovery call
         </h2>
         <p className="mt-1.5 text-sm leading-relaxed text-ink-500">
-          {compactNote ?? "2 minutes to fill. The more we know, the more useful your call — a clear roadmap for your first 10 kg, whether you join or not."}
+          {compactNote ?? "2 minutes to fill. The more we know, the more useful your call — a clear roadmap for your goal, whether you join or not."}
         </p>
       </div>
 

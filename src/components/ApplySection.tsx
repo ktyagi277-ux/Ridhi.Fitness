@@ -18,10 +18,10 @@ export default function ApplySection() {
           <Reveal>
             <p className="eyebrow text-clay-600">Free discovery call — 20 minutes, zero pitch</p>
             <h2 className="font-display mt-4 text-4xl font-semibold leading-[1.06] tracking-tight sm:text-5xl">
-              Your first 10 kg <em className="italic text-clay-600">starts with one call.</em>
+              Your transformation <em className="italic text-clay-600">starts with one call.</em>
             </h2>
             <p className="mt-5 max-w-lg text-[16px] leading-relaxed text-ink-500">
-              Fill the 2-minute form and Ridhi&apos;s team will reach out with call slots. The more we know, the more useful your call — a clear roadmap for your first 10 kg, whether you join or not.
+              Fill the 2-minute form and Ridhi&apos;s team will reach out with call slots. The more we know, the more useful your call — a clear roadmap for your goal, whether you join or not.
             </p>
           </Reveal>
           <div className="mt-8 space-y-4">
